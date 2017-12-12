@@ -12,7 +12,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """Only return projects that user created."""
-        projects = Project.object.filter(owner=self.request.user)
+        projects = Project.objects.filter(owner=self.request.user)
         return projects
 
     def perform_create(self, serializer):
@@ -26,7 +26,7 @@ class ScopeViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """Only return scopes that user created."""
-        scopes = Scope.object.filter(owner=self.request.user)
+        scopes = Scope.objects.filter(owner=self.request.user)
         return scopes
 
     def perform_create(self, serializer):
@@ -40,7 +40,7 @@ class TaskViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """Only return tasks that user created."""
-        tasks = Task.object.filter(owner=self.request.user)
+        tasks = Task.objects.filter(owner=self.request.user)
         return tasks
 
     def perform_create(self, serializer):
