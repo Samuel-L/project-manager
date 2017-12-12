@@ -1,0 +1,29 @@
+@import '../elements/_sitetitle.scss';
+@import '../elements/_navitem.scss';
+
+.nav-bar {
+	height: 10%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background-color: $navbar-color;
+
+	.site-title {
+		width: 50%;
+		float: left;
+		margin-left: 15px;
+	}
+
+	.nav-items {
+		width: 50%;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+
+		.nav-item {
+			float: right;
+			margin-right: 15px;
+		}
+	}
+}
