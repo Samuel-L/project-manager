@@ -2,6 +2,7 @@ from django.conf.urls import url, include
 from rest_framework import routers
 
 from tasks.urls import router as tasks_router
+from reports.urls import router as reports_router
 
 
 class DefaultRouter(routers.DefaultRouter):
@@ -19,7 +20,7 @@ class DefaultRouter(routers.DefaultRouter):
 
 router = DefaultRouter()
 router.extend(tasks_router)
-
+router.extend(reports_router)
 
 urlpatterns = [
     url(r'^api/', include(router.urls)),
