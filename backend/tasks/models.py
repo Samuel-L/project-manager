@@ -16,7 +16,7 @@ class Scope(models.Model):
     scope_name = models.CharField(max_length=255)
     scope_description = models.TextField()
     priority = models.IntegerField(choices=PRIORITIES)
-    due_date = models.DateTimeField()
+    due_date = models.DateTimeField(blank=True, null=True)
 
 
 class Task(models.Model):
@@ -28,4 +28,4 @@ class Task(models.Model):
     task_name = models.CharField(max_length=255)
     task_description = models.TextField()
     priority = models.IntegerField(choices=PRIORITIES)
-    due_date = models.DateTimeField()
+    due_date = models.DateTimeField(blank=True, null=True)
