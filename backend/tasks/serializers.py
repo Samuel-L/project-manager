@@ -1,13 +1,13 @@
 from rest_framework import serializers
 
-from tasks.models import Task
+from tasks.models import Task, Project
 
 
 class ProjectSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
-        model = Task
+        model = Project
         fields = ('id', 'owner', 'project_name', 'project_description')
 
 
