@@ -8,5 +8,5 @@ class ReportSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Report
-        fields = ('id', 'owner', 'task', 'project', 'start', 'end',
+        fields = ('id', 'owner', 'task', 'project', 'scope', 'start', 'end',
                   'total_in_seconds')
