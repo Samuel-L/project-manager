@@ -1,7 +1,8 @@
 from rest_framework import viewsets
 
-from tasks.models import Task, Project
-from tasks.serializers import TaskSerializer, ProjectSerializer
+from tasks.models import Task, Project, Scope
+from tasks.serializers import TaskSerializer, ProjectSerializer,\
+    ScopeSerializer
 from utils.permissions import IsOwner
 
 
@@ -16,6 +17,20 @@ class ProjectViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         """Set owner to the user creating the project and create entry."""
+        serializer.save(owner=self.request.user)
+
+
+class ScopeViewSet(viewsets.ModelViewSet):
+    serializer_class = ScopeSerializer
+    permission_classes = (IsOwner,)
+
+    def get_queryset(self):
+        """Only return scopes that user created."""
+        scopes = Scope.object.filter(owner=self.request.user)
+        return scopes
+
+    def perform_create(self, serializer):
+        """Set owner to the user creating the scope and create entry."""
         serializer.save(owner=self.request.user)
 
 
