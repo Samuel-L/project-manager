@@ -7,8 +7,8 @@ from tasks.models import Task, Scope, Project
 class Report(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
-    scope = models.ForeignKey(Scope, on_delete=models.CASCADE)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    scope = models.ForeignKey(Scope, null=True, blank=True, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, null=True, blank=True, on_delete=models.CASCADE)
     start = models.DateTimeField()
     end = models.DateTimeField()
 
