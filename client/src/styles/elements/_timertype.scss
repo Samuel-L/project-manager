@@ -1,0 +1,25 @@
+.timer-type {
+	height: 20px;
+	width: 100px;
+	margin-right: 5px;
+	font-family: $navbar-family;
+
+	background-color: $background-color;
+	color: $navbar-color;
+
+	-webkit-transition: background-color .5s;
+	-moz-transition: background-color .5s;
+	-o-transition: background-color .5s;
+	transition: background-color .5s;
+}
+
+.timer-type:hover {
+	background-color: $navbar-color !important;
+	color: $navitem-color;
+	cursor: pointer;
+}
+
+.timer-type-active {
+	background-color: $navbar-color !important;
+	color: $navitem-color;
+}

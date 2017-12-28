@@ -7,6 +7,12 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   inject: 'body'
 })
 
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyWebpackPluginConfig = new CopyWebpackPlugin([
+  {from: './src/alert-sounds/alert.mp3',
+  to: path.resolve('dist') + '/alert.mp3',}
+])
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -20,5 +26,5 @@ module.exports = {
       { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
     ]
   },
-  plugins: [HtmlWebpackPluginConfig]
+  plugins: [HtmlWebpackPluginConfig, CopyWebpackPluginConfig]
 }
