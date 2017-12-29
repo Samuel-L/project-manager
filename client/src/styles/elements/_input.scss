@@ -1,8 +1,8 @@
-.task-input {
+.custom-input {
 	height: 30%;
 	border: none;
 	border-width: 0px;
-	border-bottom: 2px solid #A5D8DD; 
+	border-bottom: 2px solid #A5D8DD;
 	background-color: $background-color;
 
 	-webkit-transition: border-bottom 300ms ease-out;
@@ -11,6 +11,6 @@
 	transition: border-bottom 300ms ease-out;
 }
 
-.task-input:focus {
+.custom-input:focus {
 	border-bottom: 2px solid $navbar-color;
 }

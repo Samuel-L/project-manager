@@ -1,5 +1,8 @@
+@import './registrationform.scss';
+
 @import '../elements/_sitetitle.scss';
 @import '../elements/_navitem.scss';
+@import '../elements/_input.scss';
 
 .nav-bar {
 	height: 10%;
@@ -24,6 +27,12 @@
 		.nav-item {
 			float: right;
 			margin-right: 15px;
+		}
+	}
+
+	.modal {
+		h1 {
+			font-size: 30px;
 		}
 	}
 }
