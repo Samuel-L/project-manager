@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Samuel-L/project-manager#readme",
   "dependencies": {
     "elemental": "^0.6.1",
+    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.2.0",

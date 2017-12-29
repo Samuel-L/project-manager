@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Input from '../elements/Input.jsx';
+import Input from '../elements/Input';
 
 export default class LoginForm extends React.Component {
   constructor(props) {
@@ -8,7 +8,7 @@ export default class LoginForm extends React.Component {
     this.state = {
       username: '',
       password: '',
-    }
+    };
 
     this.inputHandler = this.inputHandler.bind(this);
   }
@@ -21,17 +21,29 @@ export default class LoginForm extends React.Component {
       case 'password':
         this.setState({ password: e.target.value });
         break;
+      // no default
     }
   }
 
   render() {
-    return 	<form className='modal-form'>
-  						<Input type='text' name='username' placeholder='Username'
-                inputHandler={this.inputHandler}/><br/>
-  						<Input type='password' name='password' placeholder='Password'
-                inputHandler={this.inputHandler}/><br/>
-
-              <Input type='submit' value="Sign in" customClasses='sign-button'/>
-            </form>
+    return (
+      <form className="modal-form">
+        <Input
+          type="text"
+          name="username"
+          value={this.state.username}
+          placeholder="Username"
+          inputHandler={this.inputHandler}
+        /><br />
+        <Input
+          type="password"
+          name="password"
+          value={this.state.password}
+          placeholder="Password"
+          inputHandler={this.inputHandler}
+        /><br />
+        <Input type="submit" value="Sign in" customClasses="sign-button" />
+      </form>
+    );
   }
 }
