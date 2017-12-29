@@ -1,7 +1,6 @@
 import React from 'react';
 
 import TimerText from '../elements/TimerText.jsx';
-import TaskInput from '../elements/TaskInput.jsx';
 import TimerType from '../elements/TimerType.jsx';
 import TimerClock from '../elements/TimerClock.jsx';
 
