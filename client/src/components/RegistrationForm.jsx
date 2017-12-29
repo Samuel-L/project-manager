@@ -46,7 +46,7 @@ export default class RegistrationForm extends React.Component {
   }
 
   render() {
-    return 	<form className='registration-form'>
+    return 	<form className='modal-form'>
   						<Input type='text' name='username' placeholder='Username'
                 inputHandler={this.inputHandler}/><br/>
               <span>required</span>
