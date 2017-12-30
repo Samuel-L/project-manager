@@ -1,13 +1,13 @@
 import React from 'react';
 
-import TimerText from '../elements/TimerText.jsx';
-import TimerType from '../elements/TimerType.jsx';
-import TimerClock from '../elements/TimerClock.jsx';
+import TimerText from '../elements/TimerText';
+import TimerType from '../elements/TimerType';
+import TimerClock from '../elements/TimerClock';
 
-import { convertTime } from '../utils/convert-time.js';
+import { convertTime } from '../utils/convert-time';
 
-import NormalTimerSettings from './NormalTimerSettings.jsx';
-import PomodoroTimerSettings from './PomodoroTimerSettings.jsx';
+import NormalTimerSettings from './NormalTimerSettings';
+import PomodoroTimerSettings from './PomodoroTimerSettings';
 
 export default class HomepageTimer extends React.Component {
   constructor(props) {
@@ -28,9 +28,9 @@ export default class HomepageTimer extends React.Component {
       currentStage: 0,
       pomodoroSettingsDisabled: false,
       status: 'Stopped',
-    }
+    };
 
-    this.alertSound = new Audio('./alert.mp3');
+    this.alertSound = new Audio('./alert.mp3'); // eslint-disable-line no-undef
 
     this.tick = this.tick.bind(this);
     this.changeTimerType = this.changeTimerType.bind(this);
@@ -43,15 +43,14 @@ export default class HomepageTimer extends React.Component {
   }
 
   changeTimerType(e) {
-    let timerType = e.currentTarget.textContent;
-    if (timerType == 'Normal') {
+    const timerType = e.currentTarget.textContent;
+    if (timerType === 'Normal') {
       this.setState({
         activeNormal: true,
         activePomodoro: false,
         time: 0,
       });
-    }
-    else {
+    } else {
       this.setState({
         activeNormal: false,
         activePomodoro: true,
@@ -70,7 +69,7 @@ export default class HomepageTimer extends React.Component {
     if (this.state.timerPaused) {
       this.setState({ timerPaused: false });
     }
-    if (this.state.status != 'Working') {
+    if (this.state.status !== 'Working') {
       this.setState({ status: 'Working' });
       this.timer = setInterval(this.tick, 1000);
     }
@@ -84,7 +83,7 @@ export default class HomepageTimer extends React.Component {
       currentStage: 0,
       pomodoroSettingsDisabled: false,
       status: 'Stopped',
-    })
+    });
   }
 
   pauseTimer() {
@@ -96,36 +95,36 @@ export default class HomepageTimer extends React.Component {
   }
 
   alertDisabledHandler(e) {
-    let checked = e.target.value;
+    const checked = e.target.value;
     let alertDisabled;
-    if (checked == 'no') {
+    if (checked === 'no') {
       alertDisabled = true;
-    }
-    else {
+    } else {
       alertDisabled = false;
     }
 
-    this.setState({alertDisabled: alertDisabled, checked: checked});
+    this.setState({ alertDisabled, checked });
   }
 
   alertTimeHandler(e) {
-    this.setState({alertTime: e.target.value});
+    this.setState({ alertTime: e.target.value });
   }
 
   pomodoroSettingsHandler(e) {
     switch (e.target.name) {
       case 'work-time':
-        this.setState({workTime: e.target.value, time: e.target.value * 60000});
+        this.setState({ workTime: e.target.value, time: e.target.value * 60000 });
         break;
       case 'short-break-time':
-        this.setState({shortBreak: e.target.value});
+        this.setState({ shortBreak: e.target.value });
         break;
       case 'long-break-time':
-        this.setState({longBreak: e.target.value});
+        this.setState({ longBreak: e.target.value });
         break;
       case 'repeat':
-        this.setState({repeatCycle: e.target.value});
+        this.setState({ repeatCycle: e.target.value });
         break;
+      // no default
     }
   }
 
@@ -135,97 +134,99 @@ export default class HomepageTimer extends React.Component {
         this.setState({ time: this.state.time + 1000 });
 
         if (!this.state.alertDisabled) {
-          let alertTime = Math.round(this.state.time / 1000) / 60
-          if ((alertTime % this.state.alertTime) == 0) {
+          const alertTime = Math.round(this.state.time / 1000) / 60;
+          if ((alertTime % this.state.alertTime) === 0) {
             this.alertSound.play();
           }
         }
       }
-    }
-    else {
-      if (!this.state.timerPaused) {
-        if (this.state.time == 0) {
-          if (this.state.currentStage == 7 && (this.state.currentCycle + 1) < this.state.repeatCycle) {
-            if (!this.state.alertDisabled) { this.alertSound.play(); }
-            this.setState({
-              currentStage: 1,
-              currentCycle: this.state.currentCycle + 1,
-              time: this.state.workTime * 60000,
-              status: 'Working',
-            });
-          }
-          else if (this.state.currentStage == 7 && (this.state.currentCycle + 1) == this.state.repeatCycle) {
-            if (!this.state.alertDisabled) { this.alertSound.play(); }
-            this.stopTimer();
-          }
-          else if (this.state.currentStage == 6) {
-            if (!this.state.alertDisabled) { this.alertSound.play(); }
-            this.setState({
-              currentStage: this.state.currentStage + 1,
-              time: this.state.longBreak * 60000,
-              status: 'Long break',
-            });
-          }
-          else if (this.state.currentStage % 2 == 1) {
-            if (!this.state.alertDisabled) { this.alertSound.play(); }
-            this.setState({
-              currentStage: this.state.currentStage + 1,
-              time: this.state.workTime * 60000,
-              status: 'Working',
-            });
-          }
-          else if (this.state.currentStage % 2 == 0) {
-            if (!this.state.alertDisabled) { this.alertSound.play(); }
-            this.setState({
-              currentStage: this.state.currentStage +  1,
-              time: this.state.shortBreak * 60000,
-              status: 'Short break',
-            });
-          }
+    } else if (!this.state.timerPaused) {
+      if (this.state.time === 0) {
+        if (this.state.currentStage === 7 &&
+        (this.state.currentCycle + 1) < this.state.repeatCycle) {
+          if (!this.state.alertDisabled) { this.alertSound.play(); }
+          this.setState({
+            currentStage: 1,
+            currentCycle: this.state.currentCycle + 1,
+            time: this.state.workTime * 60000,
+            status: 'Working',
+          });
+        } else if (this.state.currentStage === 7 &&
+          (this.state.currentCycle + 1) === this.state.repeatCycle) {
+          if (!this.state.alertDisabled) { this.alertSound.play(); }
+          this.stopTimer();
+        } else if (this.state.currentStage === 6) {
+          if (!this.state.alertDisabled) { this.alertSound.play(); }
+          this.setState({
+            currentStage: this.state.currentStage + 1,
+            time: this.state.longBreak * 60000,
+            status: 'Long break',
+          });
+        } else if (this.state.currentStage % 2 === 1) {
+          if (!this.state.alertDisabled) { this.alertSound.play(); }
+          this.setState({
+            currentStage: this.state.currentStage + 1,
+            time: this.state.workTime * 60000,
+            status: 'Working',
+          });
+        } else if (this.state.currentStage % 2 === 0) {
+          if (!this.state.alertDisabled) { this.alertSound.play(); }
+          this.setState({
+            currentStage: this.state.currentStage + 1,
+            time: this.state.shortBreak * 60000,
+            status: 'Short break',
+          });
         }
-        this.setState({ time: this.state.time - 1000 })
       }
+      this.setState({ time: this.state.time - 1000 });
     }
   }
 
   render() {
-    return <div className='homepage-timer'>
-      <div className='timer'>
-        <TimerText>What would you like to time today?</TimerText>
-        <TimerClock status={this.state.status}>{convertTime(this.state.time)}</TimerClock>
-        <div className='timer-buttons'>
-          <div className='timer-types'>
-            <TimerType isActive={this.state.activeNormal} clickAction={this.changeTimerType}>Normal</TimerType>
-            <TimerType isActive={this.state.activePomodoro} clickAction={this.changeTimerType}>Pomodoro</TimerType>
+    return (
+      <div className="homepage-timer">
+        <div className="timer">
+          <TimerText>What would you like to time today?</TimerText>
+          <TimerClock status={this.state.status}>{convertTime(this.state.time)}</TimerClock>
+          <div className="timer-buttons">
+            <div className="timer-types">
+              <TimerType isActive={this.state.activeNormal} clickAction={this.changeTimerType}>
+                Normal
+              </TimerType>
+              <TimerType isActive={this.state.activePomodoro} clickAction={this.changeTimerType}>
+                Pomodoro
+              </TimerType>
+            </div>
+            <div className="actionButtons">
+              <button onClick={this.startTimer}>Run</button>
+              <button onClick={this.stopTimer}>Stop</button>
+              <button onClick={this.pauseTimer}>Pause</button>
+            </div>
           </div>
-          <div className='actionButtons'>
-            <button onClick={this.startTimer}>Run</button>
-            <button onClick={this.stopTimer}>Stop</button>
-            <button onClick={this.pauseTimer}>Pause</button>
-          </div>
+          {
+            this.state.activeNormal
+            ?
+              <NormalTimerSettings
+                checked={this.state.checked}
+                disabledHandler={this.alertDisabledHandler}
+                alertTimeHandler={this.alertTimeHandler}
+                disabled={this.state.alertDisabled}
+                defaultValue={this.state.alertTime}
+              />
+            :
+              <PomodoroTimerSettings
+                checked={this.state.checked}
+                disabledHandler={this.alertDisabledHandler}
+                defaultWorkTime={this.state.workTime}
+                defaultShortBreakTime={this.state.shortBreak}
+                defaultLongBreakTime={this.state.longBreak}
+                defaultRepeatValue={this.state.repeatCycle}
+                pomodoroSettingsHandler={this.pomodoroSettingsHandler}
+                disabled={this.state.pomodoroSettingsDisabled}
+              />
+          }
         </div>
-        {
-          this.state.activeNormal
-          ?
-          <NormalTimerSettings
-            checked = {this.state.checked}
-            disabledHandler={this.alertDisabledHandler}
-            alertTimeHandler={this.alertTimeHandler}
-            disabled={this.state.alertDisabled}
-            defaultValue={this.state.alertTime} />
-          :
-          <PomodoroTimerSettings
-            checked = {this.state.checked}
-            disabledHandler={this.alertDisabledHandler}
-            defaultWorkTime={this.state.workTime}
-            defaultShortBreakTime={this.state.shortBreak}
-            defaultLongBreakTime={this.state.longBreak}
-            defaultRepeatValue={this.state.repeatCycle}
-            pomodoroSettingsHandler={this.pomodoroSettingsHandler}
-            disabled={this.state.pomodoroSettingsDisabled}
-          />
-        }
       </div>
-    </div>
+    );
   }
 }
