@@ -3,6 +3,7 @@ from rest_framework import routers
 
 from tasks.urls import router as tasks_router
 from reports.urls import router as reports_router
+from authentication.urls import router as auth_router
 
 
 class DefaultRouter(routers.DefaultRouter):
@@ -21,6 +22,7 @@ class DefaultRouter(routers.DefaultRouter):
 router = DefaultRouter()
 router.extend(tasks_router)
 router.extend(reports_router)
+router.extend(auth_router)
 
 urlpatterns = [
     url(r'^api/', include(router.urls)),
