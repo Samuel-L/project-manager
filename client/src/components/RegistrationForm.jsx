@@ -1,6 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { registerUser } from '../actions/registrationActions';
 
 import Input from '../elements/Input';
+
+// eslint-disable-next-line arrow-body-style
+@connect((store) => {
+  return { userRegistered: store.registration.registered };
+})
 
 export default class RegistrationForm extends React.Component {
   constructor(props) {
@@ -15,6 +23,7 @@ export default class RegistrationForm extends React.Component {
 
     this.inputHandler = this.inputHandler.bind(this);
     this.validatePassword = this.validatePassword.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   inputHandler(e) {
@@ -45,9 +54,16 @@ export default class RegistrationForm extends React.Component {
     }
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    const { username, password, email } = this.state;
+
+    this.props.dispatch(registerUser(username, password, email));
+  }
+
   render() {
     return (
-      <form className="modal-form">
+      <form className="modal-form" onSubmit={this.handleSubmit}>
         <Input
           type="text"
           name="username"
