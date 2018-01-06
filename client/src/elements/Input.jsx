@@ -17,11 +17,18 @@ export default class Input extends React.Component {
 }
 
 Input.propTypes = {
-  validated: PropTypes.string.isRequired,
-  customClasses: PropTypes.string.isRequired,
+  validated: PropTypes.string,
+  customClasses: PropTypes.string,
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  inputHandler: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  inputHandler: PropTypes.func,
   value: PropTypes.string.isRequired,
+};
+
+Input.defaultProps = {
+  inputHandler: null,
+  placeholder: '',
+  customClasses: '',
+  validated: '',
 };

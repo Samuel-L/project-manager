@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { registerUser } from '../actions/registrationActions';
+import registerUser from '../actions/registrationActions';
 
 import Input from '../elements/Input';
 
@@ -58,6 +58,7 @@ export default class RegistrationForm extends React.Component {
     e.preventDefault();
     const { username, password, email } = this.state;
 
+    // eslint-disable-next-line react/prop-types
     this.props.dispatch(registerUser(username, password, email));
   }
 
@@ -98,7 +99,7 @@ export default class RegistrationForm extends React.Component {
           validated={this.state.passwordValidated === true ? 'passw-validated' : 'passw-novalidated'}
         /><br />
         <span>required</span>
-        <Input type="submit" value="Sign up" customClasses="sign-button" />
+        <Input name="submit-button" type="submit" value="Sign up" customClasses="sign-button" />
       </form>
     );
   }

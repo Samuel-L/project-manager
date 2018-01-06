@@ -42,7 +42,7 @@ export default class LoginForm extends React.Component {
           placeholder="Password"
           inputHandler={this.inputHandler}
         /><br />
-        <Input type="submit" value="Sign in" customClasses="sign-button" />
+        <Input name="submit-button" type="submit" value="Sign in" customClasses="sign-button" />
       </form>
     );
   }

@@ -48,16 +48,20 @@ export default class NavigationBar extends React.Component {
           isOpen={this.state.registrationModalOpen}
           modalHandler={this.registerModalHandler}
         >
-          <h1>Register</h1>
-          <RegistrationForm />
+          <div className="register-container">
+            <h1>Register</h1>
+            <RegistrationForm />
+          </div>
         </Modal>
         <Modal
           modalID="login-modal"
           isOpen={this.state.loginModalOpen}
           modalHandler={this.loginModalHandler}
         >
-          <h1>Login</h1>
-          <LoginForm />
+          <div className="login-container">
+            <h1>Login</h1>
+            <LoginForm />
+          </div>
         </Modal>
       </div>
     );
