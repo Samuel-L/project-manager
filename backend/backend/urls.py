@@ -1,5 +1,6 @@
 from django.conf.urls import url, include
 from rest_framework import routers
+from rest_framework.authtoken.views import obtain_auth_token
 
 from tasks.urls import router as tasks_router
 from reports.urls import router as reports_router
@@ -28,4 +29,5 @@ urlpatterns = [
     url(r'^api/', include(router.urls)),
     url(r'^api/accounts/', include('rest_framework.urls',
                                    namespace='rest_framework')),
+    url(r'^api/accounts/obtain-auth-token/$', obtain_auth_token),
 ]
