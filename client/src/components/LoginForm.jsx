@@ -1,5 +1,6 @@
 import React from 'react';
 
+import auth from '../utils/auth';
 import Input from '../elements/Input';
 
 export default class LoginForm extends React.Component {
@@ -11,6 +12,7 @@ export default class LoginForm extends React.Component {
     };
 
     this.inputHandler = this.inputHandler.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   inputHandler(e) {
@@ -25,9 +27,20 @@ export default class LoginForm extends React.Component {
     }
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    const { username, password } = this.state;
+    auth.login(username, password, (loggedIn) => {
+      if (loggedIn) {
+        window.location.reload();
+      }
+      return true;
+    });
+  }
+
   render() {
     return (
-      <form className="modal-form">
+      <form className="modal-form" onSubmit={this.handleSubmit}>
         <Input
           type="text"
           name="username"
