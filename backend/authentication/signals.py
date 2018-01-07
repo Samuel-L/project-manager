@@ -6,5 +6,5 @@ from rest_framework.authtoken.models import Token
 
 @receiver(post_save, sender=User)
 def init_new_user(sender, instance, signal, created, **kwargs):
-    if created:
+    if created and hasattr(Token, 'object'):
         Token.object.create(user=instance)
