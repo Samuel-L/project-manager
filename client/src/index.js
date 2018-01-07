@@ -11,8 +11,6 @@ import './styles/main.scss';
 
 import store from './store';
 
-console.log(loggedIn());
-
 ReactDOM.render(<Provider store={store}>
   { loggedIn() ? <Dashboard /> : <Homepage /> }
 </Provider>, document.getElementById('root'));
