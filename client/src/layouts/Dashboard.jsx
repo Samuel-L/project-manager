@@ -8,12 +8,12 @@ export default class Dashboard extends React.Component {
     this.click = this.click.bind(this);
   }
 
-  click(e) {
+  click(e) { // eslint-disable-line class-methods-use-this
     e.preventDefault();
     logout();
     window.location.reload();
   }
   render() {
-    return <button onClick={this.click}>LOGOUT</button>
+    return <button onClick={this.click}>LOGOUT</button>;
   }
 }

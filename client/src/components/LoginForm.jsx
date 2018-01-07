@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { login, loggedIn } from '../utils/auth';
-let auth = require('../utils/auth');
-
+import auth from '../utils/auth';
 import Input from '../elements/Input';
 
 export default class LoginForm extends React.Component {
@@ -31,14 +29,12 @@ export default class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const username = this.state.username;
-    const password = this.state.password;
-    console.log(username, password);
+    const { username, password } = this.state;
     auth.login(username, password, (loggedIn) => {
-      if(auth.loggedIn) {
+      if (loggedIn) {
         window.location.reload();
-        return true;
       }
+      return true;
     });
   }
 
