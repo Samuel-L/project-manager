@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 export default class TimerType extends React.Component {
   render() {
     return (
-      <button
+      <div
         className={this.props.isActive ? 'timer-type timer-type-active' : 'timer-type'}
         onClick={this.props.clickAction}
       >
         {this.props.children}
-      </button>);
+      </div>);
   }
 }
 
