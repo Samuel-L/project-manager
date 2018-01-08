@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Tooltip from '../elements/Tooltip';
+import Tooltip from '../../elements/Tooltip';
 
 export default class NormalTimerSettings extends React.Component {
   render() {

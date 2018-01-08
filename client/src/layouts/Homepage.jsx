@@ -1,8 +1,8 @@
 import React from 'react';
 
-import NavigationBar from '../components/NavigationBar';
-import HomepageTimer from '../components/HomepageTimer';
-import HomepageFeatures from '../components/HomepageFeatures';
+import NavigationBar from '../components/homepage/NavigationBar';
+import HomepageTimer from '../components/homepage/HomepageTimer';
+import HomepageFeatures from '../components/homepage/HomepageFeatures';
 
 export default class Homepage extends React.Component {
   render() {
