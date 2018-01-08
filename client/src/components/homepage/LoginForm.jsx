@@ -1,7 +1,7 @@
 import React from 'react';
 
-import auth from '../utils/auth';
-import Input from '../elements/Input';
+import auth from '../../utils/auth';
+import Input from '../../elements/Input';
 
 export default class LoginForm extends React.Component {
   constructor(props) {

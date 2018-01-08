@@ -1,10 +1,10 @@
 import React from 'react';
 
-import TimerText from '../elements/TimerText';
-import TimerType from '../elements/TimerType';
-import TimerClock from '../elements/TimerClock';
+import TimerText from '../../elements/TimerText';
+import TimerType from '../../elements/TimerType';
+import TimerClock from '../../elements/TimerClock';
 
-import { convertTime } from '../utils/convert-time';
+import { convertTime } from '../../utils/convert-time';
 
 import NormalTimerSettings from './NormalTimerSettings';
 import PomodoroTimerSettings from './PomodoroTimerSettings';

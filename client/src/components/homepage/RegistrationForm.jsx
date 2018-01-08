@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import registerUser from '../actions/registrationActions';
+import registerUser from '../../actions/registrationActions';
 
-import Input from '../elements/Input';
+import Input from '../../elements/Input';
 
 // eslint-disable-next-line arrow-body-style
 @connect((store) => {

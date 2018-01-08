@@ -1,7 +1,7 @@
 import React from 'react';
 
-import SiteTitle from '../elements/SiteTitle';
-import NavItem from '../elements/NavItem';
+import SiteTitle from '../../elements/SiteTitle';
+import NavItem from '../../elements/NavItem';
 
 import Modal from './Modal';
 import RegistrationForm from './RegistrationForm';
