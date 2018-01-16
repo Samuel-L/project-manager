@@ -1,7 +1,14 @@
 .nav-item {
 	font-family: $navbar-family;
-	a {
-		text-decoration: none;
-		color: $navitem-color;
-	}
+  .nav-button {
+    letter-spacing: 1.5px;
+    font-family: $navbar-family;
+    font-size: 15px;
+    border: none;
+    color: $navitem-color;
+    background-color: $navbar-color;
+  }
+  .nav-button:hover {
+    cursor: pointer;
+  }
 }
