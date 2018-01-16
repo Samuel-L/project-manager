@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default class NavItem extends React.Component {
   render() {
-    return <li className="nav-item"><button onClick={this.props.onClick}>{this.props.children}</button></li>;
+    return <li className="nav-item"><button className="nav-button" onClick={this.props.onClick}>{this.props.children}</button></li>;
   }
 }
 
