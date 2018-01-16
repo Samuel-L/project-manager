@@ -1,4 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+import { resetRegistrationState } from '../../actions/registrationActions';
 
 import SiteTitle from '../../elements/SiteTitle';
 import NavItem from '../../elements/NavItem';
@@ -7,6 +11,10 @@ import Modal from './Modal';
 import RegistrationForm from './RegistrationForm';
 import LoginForm from './LoginForm';
 
+// eslint-disable-next-line arrow-body-style
+@connect((store) => {
+  return { success: store.registration.registered };
+})
 export default class NavigationBar extends React.Component {
   constructor(props) {
     super(props);
@@ -24,6 +32,8 @@ export default class NavigationBar extends React.Component {
       this.setState({ registrationModalOpen: true });
     } else {
       this.setState({ registrationModalOpen: false });
+      // eslint-disable-next-line react/prop-types
+      this.props.dispatch(resetRegistrationState());
     }
   }
 
@@ -46,10 +56,10 @@ export default class NavigationBar extends React.Component {
         <Modal
           modalID="register-modal"
           isOpen={this.state.registrationModalOpen}
+          success={this.props.success}
           modalHandler={this.registerModalHandler}
         >
           <div className="register-container">
-            <h1>Register</h1>
             <RegistrationForm />
           </div>
         </Modal>
@@ -67,3 +77,11 @@ export default class NavigationBar extends React.Component {
     );
   }
 }
+
+NavigationBar.propTypes = {
+  success: PropTypes.bool,
+};
+
+NavigationBar.defaultProps = {
+  success: false,
+};

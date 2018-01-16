@@ -40,23 +40,25 @@ export default class LoginForm extends React.Component {
 
   render() {
     return (
-      <form className="modal-form" onSubmit={this.handleSubmit}>
-        <Input
-          type="text"
-          name="username"
-          value={this.state.username}
-          placeholder="Username"
-          inputHandler={this.inputHandler}
-        /><br />
-        <Input
-          type="password"
-          name="password"
-          value={this.state.password}
-          placeholder="Password"
-          inputHandler={this.inputHandler}
-        /><br />
-        <Input name="submit-button" type="submit" value="Sign in" customClasses="sign-button" />
-      </form>
+      <div className="form-container">
+        <form className="modal-form" onSubmit={this.handleSubmit}>
+          <Input
+            type="text"
+            name="username"
+            value={this.state.username}
+            placeholder="Username"
+            inputHandler={this.inputHandler}
+          /><br />
+          <Input
+            type="password"
+            name="password"
+            value={this.state.password}
+            placeholder="Password"
+            inputHandler={this.inputHandler}
+          /><br />
+          <Input name="submit-button" type="submit" value="Sign in" customClasses="sign-button" />
+        </form>
+      </div>
     );
   }
 }
