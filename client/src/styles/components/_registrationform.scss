@@ -1,28 +1,36 @@
-.modal-form {
-  margin-top: 15px;
+.form-container {
+  height: 100%;
 
-  input {
-    font-size: 15px;
-    margin-top: 20px;
-    width: 100%;
+  text-align: center;
+  .success-message {
+    color: green;
   }
+  .modal-form {
+    margin-top: 15px;
 
-  span {
-    font-size: 10px;
-  }
+    input {
+      font-size: 15px;
+      margin-top: 20px;
+      width: 100%;
+    }
 
-  .passw-validated {
-    border-bottom: 2px solid #49aa14 !important;
-  }
+    span {
+      font-size: 10px;
+    }
 
-  .passw-novalidated {
-    border-bottom: 2px solid #b42424 !important;
-  }
+    .passw-validated {
+      border-bottom: 2px solid #49aa14 !important;
+    }
 
-  .sign-button {
-    cursor: pointer;
-  }
-  .sign-button:hover {
-    border-bottom: 2px solid $navbar-color;
+    .passw-novalidated {
+      border-bottom: 2px solid #b42424 !important;
+    }
+
+    .sign-button {
+      cursor: pointer;
+    }
+    .sign-button:hover {
+      border-bottom: 2px solid $navbar-color;
+    }
   }
 }

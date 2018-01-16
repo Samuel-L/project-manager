@@ -9,7 +9,7 @@ export default class Modal extends React.Component {
         className="modal"
         style={{ display: this.props.isOpen ? 'block' : 'none' }}
       >
-        <div className="modal-content">
+        <div className={this.props.success ? 'modal-content modal-content-success' : 'modal-content'}>
           <span className="close" onClick={this.props.modalHandler}>&times;</span>
           {this.props.children}
         </div>
@@ -21,6 +21,7 @@ export default class Modal extends React.Component {
 Modal.propTypes = {
   modalID: PropTypes.string.isRequired,
   isOpen: PropTypes.bool.isRequired,
+  success: PropTypes.bool.isRequired,
   modalHandler: PropTypes.func.isRequired,
   children: PropTypes.element.isRequired,
 };

@@ -1,17 +1,24 @@
+import { REGISTER, REGISTER_REJECTED, REGISTER_FULFILLED, RESET_REGISTER_STATE } from '../action-types/registrationTypes';
+
 export default function reducer(state = {
   registering: false,
   registered: false,
   error: null,
 }, action) {
   switch (action.type) {
-    case 'REGISTER': {
+    case REGISTER: {
       return { ...state, registering: true };
     }
-    case 'REGISTER_REJECTED': {
+    case REGISTER_REJECTED: {
       return { ...state, registering: false, error: action.payload };
     }
-    case 'REGISTER_FULFILLED': {
+    case REGISTER_FULFILLED: {
       return { ...state, registering: false, registered: true };
+    }
+    case RESET_REGISTER_STATE: {
+      return {
+        ...state, registering: false, registered: false, error: null,
+      };
     }
     // no default
   }

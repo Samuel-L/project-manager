@@ -1,8 +1,13 @@
 import axios from 'axios';
+import { REGISTER,
+  REGISTER_FULFILLED,
+  REGISTER_REJECTED,
+  RESET_REGISTER_STATE,
+} from '../action-types/registrationTypes';
 
 function registerUser(username, password, email) {
   return function func(dispatch) {
-    dispatch({ type: 'REGISTER' });
+    dispatch({ type: REGISTER });
 
     const headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' };
 
@@ -12,12 +17,20 @@ function registerUser(username, password, email) {
 
     axios.post('http://localhost:8000/api/accounts/register/', postPayload, headers)
       .then((response) => {
-        dispatch({ type: 'REGISTER_FULFILLED', payload: response.data });
+        dispatch({ type: REGISTER_FULFILLED, payload: response.data });
       })
       .catch((err) => {
-        dispatch({ type: 'REGISTER_REJECTED', payload: err });
+        dispatch({ type: REGISTER_REJECTED, payload: err });
       });
   };
 }
 
-export default registerUser;
+function resetRegistrationState() {
+  const action = {
+    type: RESET_REGISTER_STATE,
+  };
+
+  return action;
+}
+
+export { registerUser, resetRegistrationState };
