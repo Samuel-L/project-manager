@@ -51,7 +51,7 @@ export default class RegistrationForm extends React.Component {
     this.state.passwordRetyped !== '') {
       this.setState({ passwordValidated: true });
     } else if (this.state.password !== this.state.passwordRetyped && this.state.password !== '' &&
-      this.state.passwordRetyped !== '') {
+    this.state.passwordRetyped !== '') {
       this.setState({ passwordValidated: false });
     }
   }
