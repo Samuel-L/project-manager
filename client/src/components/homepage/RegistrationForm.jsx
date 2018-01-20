@@ -6,6 +6,7 @@ import { registerUser } from '../../actions/registrationActions';
 
 import Input from '../../elements/Input';
 import SuccessMessage from '../../elements/SuccessMessage';
+import FailureMessage from '../../elements/FailureMessage';
 
 // eslint-disable-next-line arrow-body-style
 @connect((store) => {
@@ -21,6 +22,7 @@ export default class RegistrationForm extends React.Component {
       password: '',
       passwordRetyped: '',
       passwordValidated: null,
+      passwordValidatedMessage: '',
     };
 
     this.inputHandler = this.inputHandler.bind(this);
@@ -60,14 +62,24 @@ export default class RegistrationForm extends React.Component {
     e.preventDefault();
     const { username, password, email } = this.state;
 
-    // eslint-disable-next-line react/prop-types
-    this.props.dispatch(registerUser(username, password, email));
+    if (this.state.passwordValidated) {
+      // eslint-disable-next-line react/prop-types
+      this.props.dispatch(registerUser(username, password, email));
+    } else {
+      this.setState({ passwordValidatedMessage: 'Passwords does not match!' });
+    }
   }
 
   render() {
     return (
       <div className="form-container">
         { !this.props.userRegistered ? <h1>Register</h1> : null }
+        { this.state.passwordValidatedMessage
+            ?
+              <FailureMessage>{this.state.passwordValidatedMessage}</FailureMessage>
+            :
+            null
+        }
         { !this.props.userRegistered
           ?
             <form className="modal-form" onSubmit={this.handleSubmit}>
