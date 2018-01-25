@@ -159,8 +159,12 @@ export default class PomodoroTimer extends React.Component {
 
         <div className="timer-buttons">
           <div className="action-buttons">
-            <button className="action-button" onClick={this.resume}>Resume</button>
-            <button className="action-button" onClick={this.run}>Run</button>
+            { this.state.status === "Stopped"
+              ?
+                <button className="action-button" onClick={this.run}>Run</button>
+              :
+                <button className="action-button" onClick={this.resume}>Resume</button>
+            }
             <button className="action-button" onClick={this.stop}>Stop</button>
             <button className="action-button" onClick={this.pause}>Pause</button>
           </div>
