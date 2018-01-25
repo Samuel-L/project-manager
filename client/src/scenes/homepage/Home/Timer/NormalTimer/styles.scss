@@ -1,0 +1,10 @@
+@import '../../../../sharedStyles/_colors.scss';
+@import '../../../../sharedStyles/_typography.scss';
+
+.timer-container {
+  font-family: $text-family;
+}
+
+.clock {
+  font-size: 35px;
+}

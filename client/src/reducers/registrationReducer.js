@@ -1,4 +1,4 @@
-import { REGISTER, REGISTER_REJECTED, REGISTER_FULFILLED, RESET_REGISTER_STATE } from '../action-types/registrationTypes';
+import { REGISTER, REGISTER_REJECTED, REGISTER_FULFILLED, RESET_REGISTER_STATE } from '../actionTypes/registrationTypes';
 
 export default function reducer(state = {
   registering: false,
