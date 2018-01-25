@@ -28,17 +28,26 @@ export default class NormalTimer extends React.Component {
     this.state = {
       ms: 0,
       status: 'Stopped',
+      alert: true,
+      alertTime: 5,
     };
+
+    this.alertSound = new Audio('./alert.mp3'); // eslint-disable-line no-undef
 
     this.tick = this.tick.bind(this);
     this.run = this.run.bind(this);
     this.stop = this.stop.bind(this);
     this.pause = this.pause.bind(this);
     this.resume = this.resume.bind(this);
+    this.alertHandler = this.alertHandler.bind(this);
+    this.settingHandler = this.settingHandler.bind(this);
   }
 
   tick() {
     this.setState({ ms: this.state.ms + 1000 });
+
+    const timeInMinutes = Math.round(this.state.ms / 1000) / 60;
+    if ((timeInMinutes % this.state.alertTime) === 0 ) { this.alertSound.play(); }
   }
 
   run() {
@@ -76,6 +85,20 @@ export default class NormalTimer extends React.Component {
     }
   }
 
+  alertHandler() {
+    if (this.state.alert) {
+      this.setState({ alert: false });
+    } else {
+      this.setState({ alert: true });
+    }
+  }
+
+  settingHandler(e) {
+    if (e.target.name === "alert-time") {
+      this.setState({ alertTime: e.target.value });
+    }
+  }
+
   render() {
     return (
       <div className="timer-container">
@@ -84,7 +107,7 @@ export default class NormalTimer extends React.Component {
 
         <div className="timer-buttons">
           <div className="action-buttons">
-            { this.state.status === "Stopped"
+            { this.state.status === 'Stopped'
               ?
                 <button className="action-button" onClick={this.run}>Run</button>
               :
@@ -97,9 +120,43 @@ export default class NormalTimer extends React.Component {
 
         <div className="settings">
           <form>
-            <span className="alert-setting-text">Alert</span>
-            <input type="radio" true name="alert" /> Yes
-            <input type="radio" false name="alert" /> No
+            <div className="setting">
+              <span className="settings-description">Alert</span>
+              <label className="radio-label" htmlFor="radio-no">No
+                <input
+                  id="radio-no"
+                  type="radio"
+                  name="alert"
+                  checked={!this.state.alert}
+                  onChange={this.alertHandler}
+                />
+              </label>
+              <label className="radio-label" htmlFor="radio-yes">Yes
+                <input
+                  id="radio-yes"
+                  type="radio"
+                  name="alert"
+                  checked={this.state.alert}
+                  onChange={this.alertHandler}
+                />
+              </label>
+              { this.state.alert
+                ?
+                  <div className="setting">
+                    <label className="setting-description" htmlFor="alert-time">Every (minutes)
+                      <input
+                        id="alert-time"
+                        type="number"
+                        name="alert-time"
+                        value={this.state.alertTime}
+                        onChange={this.settingHandler}
+                      />
+                    </label>
+                  </div>
+                :
+                  null
+              }
+            </div>
           </form>
         </div>
       </div>
