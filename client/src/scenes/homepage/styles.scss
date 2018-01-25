@@ -1,0 +1,29 @@
+@import '../sharedStyles/_colors.scss';
+@import '../sharedStyles/_typography.scss';
+
+.app-container {
+  background-color: $background-color;
+}
+
+.nav-bar {
+  background-color: $nav-bar-bg-color;
+  font-family: $nav-bar-family;
+}
+
+.site-title {
+  font-size: 30px;
+  color: $site-title-color;
+}
+
+.link a{
+  color: $nav-link-color;
+  text-decoration: none;
+  -webkit-transition: color .2s ease-out;
+  -moz-transition: color .2s ease-out;
+  -o-transition: color .2s ease-out;
+  transition: color .2s ease-out;
+}
+
+.link a:hover {
+  color: $focus-color;
+}

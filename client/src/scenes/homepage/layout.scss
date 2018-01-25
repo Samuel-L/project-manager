@@ -1,0 +1,93 @@
+.app-container {
+  height: 100%;
+
+  .nav-bar {
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .site-title {
+      width: 50%;
+      float: left;
+      margin-left: 15px;
+    }
+
+    .nav-links {
+      width: 50%;
+      margin: 0;
+      padding: 0;
+
+      .link {
+        float: right;
+        margin-right: 15px
+      }
+    }
+  }
+  
+  .content {
+    height: 90%;
+
+    .home-container {
+      height: 100%;
+      display: grid;
+      grid-template-rows: 5% 5% 50% auto;
+      grid-template-columns: 25% 50% 25%;
+
+      .timer-types {
+        grid-column-start: 2;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 2;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .normal-timer { margin-right: 15px; }
+      }
+
+      .timer-container {
+        grid-column-start: 2;
+        grid-column-end: 2;
+        grid-row-start: 3;
+        grid-row-end: 3;
+
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        grid-template-rows: 20% 10% 20% 20% 20%;
+
+        .clock {
+          text-align: center;
+          grid-column-start: 2;
+          grid-column-end: 4;
+        }
+
+        .timer-buttons {
+          grid-column-start: 3;
+          grid-column-end: 5;
+          grid-row-start: 3;
+          grid-row-end: 4;
+
+          .action-buttons { float: right; }
+        }
+
+        .settings {
+          grid-column-start: 1;
+          grid-column-end: 3;
+          grid-row-start: 3;
+          grid-row-end: 6;
+
+          .setting {
+            width: 100%;
+            margin-top: 10px;
+            
+            .radio-label {
+              float: right;
+            }
+          }
+        }
+      }
+    }
+  }
+}
