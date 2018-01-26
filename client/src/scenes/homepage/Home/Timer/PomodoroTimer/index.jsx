@@ -172,71 +172,73 @@ export default class PomodoroTimer extends React.Component {
 
         <div className="settings">
           <form>
-            <div className="setting">
-              <span className="setting-description">Alert</span>
-              <label className="radio-label" htmlFor="radio-no">No
-                <input
-                  id="radio-no"
-                  type="radio"
-                  name="alert"
-                  checked={!this.state.alert}
-                  onChange={this.alertHandler}
-                />
-              </label>
-              <label className="radio-label" htmlFor="radio-yes">Yes
-                <input
-                  id="radio-yes"
-                  type="radio"
-                  name="alert"
-                  checked={this.state.alert}
-                  onChange={this.alertHandler}
-                />
-              </label>
-            </div>
-            <div className="setting">
-              <label htmlFor="work-time" className="setting-description">Work Time
-                <input
-                  id="work-time"
-                  type="number"
-                  name="work-time"
-                  value={this.state.workTime}
-                  onChange={this.settingsHandler}
-                />
-              </label>
-            </div>
-            <div className="setting">
-              <label htmlFor="short-break-time" className="setting-description">Pause time (1-3rd pomodoro)
-                <input
-                  id="short-break-time"
-                  type="number"
-                  name="short-break-time"
-                  value={this.state.shortBreak}
-                  onChange={this.settingsHandler}
-                />
-              </label>
-            </div>
-            <div className="setting">
-              <label htmlFor="long-break-time" className="setting-description">Break time (4th pomodoro)
-                <input
-                  id="long-break-time"
-                  type="number"
-                  name="long-break-time"
-                  value={this.state.longBreak}
-                  onChange={this.settingsHandler}
-                />
-              </label>
-            </div>
-            <div className="setting">
-              <label htmlFor="repeat" className="setting-description">Repeat cycle
-                <input
-                  id="repeat"
-                  type="number"
-                  name="repeat"
-                  value={this.state.repeatCycle}
-                  onChange={this.settingsHandler}
-                />
-              </label>
-            </div>
+            <fieldset disabled={this.state.status !== 'Stopped'}>
+              <div className="setting">
+                <span className="setting-description">Alert</span>
+                <label className="radio-label" htmlFor="radio-no">No
+                  <input
+                    id="radio-no"
+                    type="radio"
+                    name="alert"
+                    checked={!this.state.alert}
+                    onChange={this.alertHandler}
+                  />
+                </label>
+                <label className="radio-label" htmlFor="radio-yes">Yes
+                  <input
+                    id="radio-yes"
+                    type="radio"
+                    name="alert"
+                    checked={this.state.alert}
+                    onChange={this.alertHandler}
+                  />
+                </label>
+              </div>
+              <div className="setting">
+                <label htmlFor="work-time" className="setting-description">Work Time
+                  <input
+                    id="work-time"
+                    type="number"
+                    name="work-time"
+                    value={this.state.workTime}
+                    onChange={this.settingsHandler}
+                  />
+                </label>
+              </div>
+              <div className="setting">
+                <label htmlFor="short-break-time" className="setting-description">Pause time (1-3rd pomodoro)
+                  <input
+                    id="short-break-time"
+                    type="number"
+                    name="short-break-time"
+                    value={this.state.shortBreak}
+                    onChange={this.settingsHandler}
+                  />
+                </label>
+              </div>
+              <div className="setting">
+                <label htmlFor="long-break-time" className="setting-description">Break time (4th pomodoro)
+                  <input
+                    id="long-break-time"
+                    type="number"
+                    name="long-break-time"
+                    value={this.state.longBreak}
+                    onChange={this.settingsHandler}
+                  />
+                </label>
+              </div>
+              <div className="setting">
+                <label htmlFor="repeat" className="setting-description">Repeat cycle
+                  <input
+                    id="repeat"
+                    type="number"
+                    name="repeat"
+                    value={this.state.repeatCycle}
+                    onChange={this.settingsHandler}
+                  />
+                </label>
+              </div>
+            </fieldset>
           </form>
         </div>
       </div>

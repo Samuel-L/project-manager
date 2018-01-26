@@ -120,43 +120,45 @@ export default class NormalTimer extends React.Component {
 
         <div className="settings">
           <form>
-            <div className="setting">
-              <span className="settings-description">Alert</span>
-              <label className="radio-label" htmlFor="radio-no">No
-                <input
-                  id="radio-no"
-                  type="radio"
-                  name="alert"
-                  checked={!this.state.alert}
-                  onChange={this.alertHandler}
-                />
-              </label>
-              <label className="radio-label" htmlFor="radio-yes">Yes
-                <input
-                  id="radio-yes"
-                  type="radio"
-                  name="alert"
-                  checked={this.state.alert}
-                  onChange={this.alertHandler}
-                />
-              </label>
-              { this.state.alert
-                ?
-                  <div className="setting">
-                    <label className="setting-description" htmlFor="alert-time">Every (minutes)
-                      <input
-                        id="alert-time"
-                        type="number"
-                        name="alert-time"
-                        value={this.state.alertTime}
-                        onChange={this.settingHandler}
-                      />
-                    </label>
-                  </div>
-                :
-                  null
-              }
-            </div>
+            <fieldset disabled={this.state.status !== "Stopped"}>
+              <div className="setting">
+                <span className="settings-description">Alert</span>
+                <label className="radio-label" htmlFor="radio-no">No
+                  <input
+                    id="radio-no"
+                    type="radio"
+                    name="alert"
+                    checked={!this.state.alert}
+                    onChange={this.alertHandler}
+                  />
+                </label>
+                <label className="radio-label" htmlFor="radio-yes">Yes
+                  <input
+                    id="radio-yes"
+                    type="radio"
+                    name="alert"
+                    checked={this.state.alert}
+                    onChange={this.alertHandler}
+                  />
+                </label>
+                { this.state.alert
+                  ?
+                    <div className="setting">
+                      <label className="setting-description" htmlFor="alert-time">Every (minutes)
+                        <input
+                          id="alert-time"
+                          type="number"
+                          name="alert-time"
+                          value={this.state.alertTime}
+                          onChange={this.settingHandler}
+                        />
+                      </label>
+                    </div>
+                  :
+                    null
+                }
+              </div>
+            </fieldset>
           </form>
         </div>
       </div>
