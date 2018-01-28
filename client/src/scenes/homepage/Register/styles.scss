@@ -1,0 +1,78 @@
+@import '../../sharedStyles/_colors.scss';
+@import '../../sharedStyles/_typography.scss';
+
+.register-container {
+  -webkit-animation: fadein 1s;
+  -moz-animation: fadein 1s;
+  -ms-animation: fadein 1s;
+  -o-animation: fadein 1s;
+  animation: fadein 1s;
+
+  h1 {
+    color: $heading-color;
+    font-family: $nav-bar-family;
+    font-size: 50px;
+  }
+
+  .registration-form {
+
+    .input-label {
+      font-family: $text-family;
+      letter-spacing: 1.5px;
+      color: $form-label-color;
+    }
+    
+    input {
+      font-family: $text-family;
+      border: none;
+
+      border-bottom: 1px solid $form-input-border-color;
+      transition: border-bottom 0.2s ease-out;
+      -o-transition: border-bottom 0.2s ease-out;
+      -ms-transition: border-bottom 0.2s ease-out;
+      -moz-transition: border-bottom 0.2s ease-out;
+      -webkit-transition-: border-bottom 0.2s ease-out;
+    }
+
+    input:focus {
+      border-bottom: 1px solid $form-input-border-focused-color;
+    }
+
+    input[type="submit"] {
+      border-radius: 5px;
+      background-color: $button-bg-color;
+      color: $button-text-color;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    input[type="submit"]:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

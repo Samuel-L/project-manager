@@ -35,9 +35,9 @@ export default class HomepageEntry extends React.Component {
           </ul>
         </div>
         <div className="content">
-          <Route path="/register" component={Register} />
+          <Route path="/register" component={Home} />
           <Route path="/login" component={Login} />
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Register} />
         </div>
       </div>
     );
