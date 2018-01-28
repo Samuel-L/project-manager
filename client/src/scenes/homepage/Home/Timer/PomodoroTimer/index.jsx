@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { startTimer, endTimer, pauseTimer, resumeTimer } from '../actions';
-import { convertTime } from '../utils';
+import convertTime from '../utils';
 
 import '../styles.scss';
 
@@ -43,14 +43,6 @@ export default class PomodoroTimer extends React.Component {
     this.tick = this.tick.bind(this);
   }
 
-  alertHandler() {
-    if (this.state.alert) {
-      this.setState({ alert: false });
-    } else {
-      this.setState({ alert: true });
-    }
-  }
-
   componentWillMount() {
     this.setState({ ms: this.state.workTime * 60000 });
   }
@@ -73,6 +65,14 @@ export default class PomodoroTimer extends React.Component {
         this.setState({ repeatCycle: e.target.value });
         break;
       // no default
+    }
+  }
+
+  alertHandler() {
+    if (this.state.alert) {
+      this.setState({ alert: false });
+    } else {
+      this.setState({ alert: true });
     }
   }
 
@@ -159,7 +159,7 @@ export default class PomodoroTimer extends React.Component {
 
         <div className="timer-buttons">
           <div className="action-buttons">
-            { this.state.status === "Stopped"
+            { this.state.status === 'Stopped'
               ?
                 <button className="action-button" onClick={this.run}>Run</button>
               :
@@ -245,3 +245,16 @@ export default class PomodoroTimer extends React.Component {
     );
   }
 }
+
+PomodoroTimer.propTypes = {
+  running: PropTypes.bool,
+  dispatch: PropTypes.func, // eslint-disable-line react/require-default-props
+  pausedStartTime: PropTypes.number,
+  totalPausedTime: PropTypes.number,
+};
+
+PomodoroTimer.defaultProps = {
+  running: false,
+  pausedStartTime: 0,
+  totalPausedTime: 0,
+};

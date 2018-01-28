@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { startTimer, endTimer, pauseTimer, resumeTimer } from '../actions';
-import { convertTime } from '../utils';
+import convertTime from '../utils';
 
 import '../styles.scss';
 
@@ -43,36 +43,17 @@ export default class NormalTimer extends React.Component {
     this.settingHandler = this.settingHandler.bind(this);
   }
 
-  tick() {
-    this.setState({ ms: this.state.ms + 1000 });
-
-    const timeInMinutes = Math.round(this.state.ms / 1000) / 60;
-    if ((timeInMinutes % this.state.alertTime) === 0 ) { this.alertSound.play(); }
-  }
-
-  run() {
-    if (!this.props.running) {
-      this.props.dispatch(startTimer());
-      this.timer = setInterval(this.tick, 1000);
-
-      this.setState({ status: 'Work' });
+  settingHandler(e) {
+    if (e.target.name === 'alert-time') {
+      this.setState({ alertTime: e.target.value });
     }
   }
 
-  stop() {
-    this.props.dispatch(endTimer());
-    this.setState({
-      ms: 0,
-      status: 'Stopped',
-    });
-    clearInterval(this.timer);
-  }
-
-  pause() {
-    if (this.props.running) {
-      this.props.dispatch(pauseTimer());
-      this.setState({ status: 'Paused' });
-      clearInterval(this.timer);
+  alertHandler() {
+    if (this.state.alert) {
+      this.setState({ alert: false });
+    } else {
+      this.setState({ alert: true });
     }
   }
 
@@ -85,18 +66,37 @@ export default class NormalTimer extends React.Component {
     }
   }
 
-  alertHandler() {
-    if (this.state.alert) {
-      this.setState({ alert: false });
-    } else {
-      this.setState({ alert: true });
+  pause() {
+    if (this.props.running) {
+      this.props.dispatch(pauseTimer());
+      this.setState({ status: 'Paused' });
+      clearInterval(this.timer);
     }
   }
 
-  settingHandler(e) {
-    if (e.target.name === "alert-time") {
-      this.setState({ alertTime: e.target.value });
+  stop() {
+    this.props.dispatch(endTimer());
+    this.setState({
+      ms: 0,
+      status: 'Stopped',
+    });
+    clearInterval(this.timer);
+  }
+
+  run() {
+    if (!this.props.running) {
+      this.props.dispatch(startTimer());
+      this.timer = setInterval(this.tick, 1000);
+
+      this.setState({ status: 'Work' });
     }
+  }
+
+  tick() {
+    this.setState({ ms: this.state.ms + 1000 });
+
+    const timeInMinutes = Math.round(this.state.ms / 1000) / 60;
+    if ((timeInMinutes % this.state.alertTime) === 0) { this.alertSound.play(); }
   }
 
   render() {
@@ -120,7 +120,7 @@ export default class NormalTimer extends React.Component {
 
         <div className="settings">
           <form>
-            <fieldset disabled={this.state.status !== "Stopped"}>
+            <fieldset disabled={this.state.status !== 'Stopped'}>
               <div className="setting">
                 <span className="settings-description">Alert</span>
                 <label className="radio-label" htmlFor="radio-no">No
@@ -170,6 +170,11 @@ NormalTimer.propTypes = {
   pausedStartTime: PropTypes.number,
   totalPausedTime: PropTypes.number,
   running: PropTypes.bool,
-  startTime: PropTypes.number,
-  dispatch: PropTypes.func,
+  dispatch: PropTypes.func, // eslint-disable-line react/require-default-props
+};
+
+NormalTimer.defaultProps = {
+  pausedStartTime: 0,
+  totalPausedTime: 0,
+  running: false,
 };

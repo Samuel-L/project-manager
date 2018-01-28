@@ -7,4 +7,4 @@ function convertTime(mSec) {
   return `${minutes}:${sec}`;
 }
 
-export { convertTime };
+export default convertTime;
