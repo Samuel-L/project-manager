@@ -1,34 +1,25 @@
 @import '../../sharedStyles/_colors.scss';
 @import '../../sharedStyles/_typography.scss';
-@import './_svg.scss';
-
-.home-container {
-  background-image: url($svg);
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: 100%;
-}
-
 
 .timer-types {
   font-family: $text-family;
   font-size: 35px;
-}
+  
+  .timer {
+    color: $nav-link-color;
+    cursor: pointer;
 
-.timer {
-  color: $nav-link-color;
-  cursor: pointer;
-
-  -webkit-transition: color .2s ease-out;
-  -moz-transition: color .2s ease-out;
-  -o-transition: color .2s ease-out;
-  transition: color .2s ease-out;
-}
-
-.timer:hover {
-  color: $focus-color;
-}
-
-.timer-focused {
-  color: $focus-color !important;
+    -webkit-transition: color .2s ease-out;
+    -moz-transition: color .2s ease-out;
+    -o-transition: color .2s ease-out;
+    transition: color .2s ease-out;
+  }
+  
+  .timer:hover {
+    color: $focus-color;
+  }
+  
+  .timer-focused {
+    color: $focus-color !important;
+  }
 }

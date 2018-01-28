@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { startTimer, endTimer, pauseTimer, resumeTimer } from '../actions';
 import { convertTime } from '../utils';
 
-import './styles.scss';
+import '../styles.scss';
 
 // eslint-disable-next-line arrow-body-style
 @connect((store) => {
@@ -167,9 +167,9 @@ export default class NormalTimer extends React.Component {
 }
 
 NormalTimer.propTypes = {
-  pausedStartTime: PropTypes.number.isRequired,
-  totalPausedTime: PropTypes.number.isRequired,
-  running: PropTypes.bool.isRequired,
-  startTime: PropTypes.number.isRequired,
-  dispatch: PropTypes.func.isRequired,
+  pausedStartTime: PropTypes.number,
+  totalPausedTime: PropTypes.number,
+  running: PropTypes.bool,
+  startTime: PropTypes.number,
+  dispatch: PropTypes.func,
 };
