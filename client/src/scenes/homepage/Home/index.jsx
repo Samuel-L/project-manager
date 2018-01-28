@@ -15,6 +15,7 @@ import NormalTimer from './Timer/NormalTimer/index';
 import PomodoroTimer from './Timer/PomodoroTimer/index';
 
 import './styles.scss';
+import './layout.scss';
 
 export default class Home extends React.Component {
   constructor() {

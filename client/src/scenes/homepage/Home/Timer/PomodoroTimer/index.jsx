@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { startTimer, endTimer, pauseTimer, resumeTimer } from '../actions';
 import { convertTime } from '../utils';
 
-import './styles.scss';
+import '../styles.scss';
 
 // eslint-disable-next-line arrow-body-style
 @connect((store) => {
