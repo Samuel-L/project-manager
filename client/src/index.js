@@ -5,17 +5,16 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import Navigation from './scenes/homepage/index';
+import Homepage from './scenes/homepage/index';
+import Dashboard from './scenes/Dashboard/index';
+import { loggedIn } from './scenes/homepage/Login/auth';
 
 import store from './store';
 
 import './reset.scss';
 
-/*ReactDOM.render(<Provider store={store}>
-  { loggedIn() ? <Dashboard /> : <Homepage /> }
-</Provider>, document.getElementById('root'));*/
 ReactDOM.render(<Provider store={store}>
   <BrowserRouter>
-    <Navigation />
+    { !loggedIn() ? <Homepage /> : <Dashboard /> }
   </BrowserRouter>
 </Provider>, document.getElementById('root'));
