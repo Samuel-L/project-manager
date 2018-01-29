@@ -11,6 +11,18 @@
     align-self: center;
   }
 
+  .error-msg {
+    grid-column: 2;
+    grid-row: 2;
+    text-align: center;
+  }
+
+  .success {
+    grid-row: 2;
+    align-self: center;
+    justify-self: center;
+  }
+
   .registration-form {
     grid-column: 2;
     grid-row: 2;
