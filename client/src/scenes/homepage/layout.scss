@@ -14,10 +14,12 @@
     .site-title {
       grid-column: 1 / 1;
       margin-left: 15px;
+      align-self: center;
     }
 
     .nav-links {
       grid-column: 3 / 3;
+      align-self: center;
 
       .link {
         float: right;

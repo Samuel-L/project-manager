@@ -1,0 +1,7 @@
+@import '../../sharedStyles/_typography.scss';
+
+.error-msg {
+  font-family: $text-family;
+  font-size: 15px;
+  color: red;
+}

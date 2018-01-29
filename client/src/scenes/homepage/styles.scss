@@ -8,6 +8,7 @@
 .nav-bar {
   background-color: $nav-bar-bg-color;
   font-family: $nav-bar-family;
+  border-bottom: 5px solid $nav-border-bottom-color;
 }
 
 .site-title {
