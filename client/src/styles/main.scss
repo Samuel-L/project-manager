@@ -3,8 +3,20 @@
 @import './utils/typography';
 @import './utils/base';
 
+@import './elements/PageHeading/styles';
+@import './elements/OverviewHeading/styles';
+@import './elements/Project/styles';
+
 @import './components/Timers/styles';
+
 @import './components/NavBars/NotAuthNav/styles';
+@import './components/NavBars/NotAuthNav/layout';
+
+@import './components/NavBars/AuthNav/styles';
+@import './components/NavBars/AuthNav/layout';
+
+@import './components/ProjectsOverview/styles';
+@import './components/ProjectsOverview/layout';
 
 @import './views/Home/layout';
 @import './views/Home/styles';
@@ -14,3 +26,6 @@
 
 @import './views/Register/layout';
 @import './views/Register/styles';
+
+@import './views/Overview/layout';
+@import './views/Overview/styles';
