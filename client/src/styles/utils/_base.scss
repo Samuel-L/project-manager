@@ -1,0 +1,33 @@
+.not-auth-container {
+  height: 100%;
+
+  display: grid;
+  grid-template-rows: 10% 1fr;
+  grid-template-columns: 1fr;
+
+  .not-auth-nav {
+    display: grid;
+    grid-template-columns: 25% 1fr 25%;
+    justify-content: center;
+    align-content: center;
+
+    .site-title {
+      grid-column: 1 / 1;
+      margin-left: 15px;
+      align-self: center;
+    }
+
+    .nav-links {
+      grid-column: 3 / 3;
+      align-self: center;
+
+      .link {
+        float: right;
+        margin-right: 15px;
+      }
+    }
+  }
+  .content {
+    height: 90%;
+  }
+}

@@ -1,0 +1,66 @@
+.home-container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 10% 1fr 10%;
+  grid-template-rows: 10% 1fr 1fr;
+  justify-content: center;
+  align-content: center;
+
+  .timer-types {
+    grid-column: 2 / 3;
+    justify-self: center;
+    align-self: center;
+
+    .timer {
+      margin: 20px;
+    }
+  }
+
+  .timer-container {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 10% 2fr;
+
+    .clock {
+      grid-column: 2 / 3;
+      grid-row: 1;
+      justify-self: center;
+      align-self: center;
+    }
+
+    .status {
+     grid-column: 2 / 3;
+     grid-row: 2;
+     justify-self: end;
+     align-self: end;
+     margin: 15px;
+    }
+
+    .timer-buttons {
+      grid-column: 3 / 4;
+      grid-row: 3;
+
+      .action-buttons { float: right; }
+    }
+
+    .settings {
+      grid-column: 1 / 3;
+      grid-row: 3;
+
+      .setting {
+        margin-top: 20px;
+      }
+
+      .radio-label { float: right; }
+
+      input {
+        float: right;
+        width: 50px;
+      }
+    }
+  }
+}

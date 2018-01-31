@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-import registration from './registrationReducer';
-import login from './loginReducer';
-import timer from './timerReducer';
+import register from './register';
+import login from './login';
+import timer from './timer';
 
 export default combineReducers({
-  registration,
+  register,
   login,
   timer,
 });

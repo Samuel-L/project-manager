@@ -1,0 +1,10 @@
+.not-auth-nav {
+  font-family: $nav-bar-family;
+  background-color: white;
+  border-bottom: 5px solid blue;
+
+  .site-title {
+    font-size: 30px;
+    color: black;
+  }
+}

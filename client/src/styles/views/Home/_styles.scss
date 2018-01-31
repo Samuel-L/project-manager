@@ -1,0 +1,56 @@
+.home-container {
+  font-family: $text-family;
+
+  -webkit-animation: fadein 1s;
+  -moz-animation: fadein 1s;
+  -ms-animation: fadein 1s;
+  -o-animation: fadein 1s;
+  animation: fadein 1s;
+
+  .timer-types {
+    font-size: 35px;
+
+    .timer {
+      color: blue;
+      cursor: pointer;
+
+      -webkit-transition: color .2s ease-out;
+      -moz-transition: color .2s ease-out;
+      -o-transition: color .2s ease-out;
+      transition: color .2s ease-out;
+    }
+
+    .timer:hover {
+      color: red;
+    }
+
+    .timer-focused {
+      color: black !important;
+    }
+  }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

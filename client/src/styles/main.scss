@@ -1,0 +1,16 @@
+@import './utils/base';
+@import './utils/colors';
+@import './utils/reset';
+@import './utils/typography';
+
+@import './components/Timers/styles';
+@import './components/NavBars/NotAuthNav/styles';
+
+@import './views/Home/layout';
+@import './views/Home/styles';
+
+@import './views/Login/layout';
+@import './views/Login/styles';
+
+@import './views/Register/layout';
+@import './views/Register/styles';
