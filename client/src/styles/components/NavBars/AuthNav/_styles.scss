@@ -10,15 +10,18 @@
 
   .nav-links {
     .link {
+      margin-left: 5px;
       background-color: $background-color;
       a {
         color: $carbon;
+        border-left: 4px solid $blackboard;
         text-decoration: none;
       }
     }
 
     .link-selected a {
       color: $blackboard !important;
+      border-left: 4px solid $watermelon;
     }
   }
 }
