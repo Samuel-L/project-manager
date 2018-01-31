@@ -6,7 +6,7 @@ export default class TimeWorkedOverview extends React.Component {
   render() {
     return (
       <div className="time-worked-container">
-        <OverviewHeading>Tasks</OverviewHeading>
+        <OverviewHeading>Time Worked</OverviewHeading>
       </div>
     );
   }
