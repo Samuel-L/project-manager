@@ -11,7 +11,9 @@ export default class Project extends React.Component {
         </div>
         <div className="tasks">
           <p className="task-count">
-            {this.props.finishedTasks}/{this.props.tasks} done
+            <span className="finished-tasks">{this.props.finishedTasks}</span>
+            /
+            {this.props.tasks} done
           </p>
           <p>Tasks: </p>
         </div>
