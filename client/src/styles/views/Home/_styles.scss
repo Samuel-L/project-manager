@@ -11,7 +11,7 @@
     font-size: 35px;
 
     .timer {
-      color: blue;
+      color: $carbon;
       cursor: pointer;
 
       -webkit-transition: color .2s ease-out;
@@ -21,11 +21,11 @@
     }
 
     .timer:hover {
-      color: red;
+      color: $watermelon;
     }
 
     .timer-focused {
-      color: black !important;
+      color: $watermelon !important;
     }
   }
 }

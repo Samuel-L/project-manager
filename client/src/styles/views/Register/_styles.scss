@@ -6,13 +6,13 @@
   animation: fadein 1s;
 
   h1 {
-    color: blue;
+    color: $watermelon;
     font-family: $nav-bar-family;
     font-size: 50px;
   }
 
   .success {
-    color: blue;
+    color: $watermelon;
     -webkit-animation: fadein 0.5s;
     -moz-animation: fadein 0.5s;
     -ms-animation: fadein 0.5s;
@@ -25,14 +25,14 @@
     .input-label {
       font-family: $text-family;
       letter-spacing: 1.5px;
-      color: blue;
+      color: $blackboard;
     }
 
     input {
       font-family: $text-family;
       border: none;
 
-      border-bottom: 1px solid blue;
+      border-bottom: 1px solid $blackboard;
       transition: border-bottom 0.2s ease-out;
       -o-transition: border-bottom 0.2s ease-out;
       -ms-transition: border-bottom 0.2s ease-out;
@@ -41,13 +41,14 @@
     }
 
     input:focus {
-      border-bottom: 1px solid blue;
+      border-bottom: 1px solid $watermelon;
     }
 
     input[type="submit"] {
       border-radius: 5px;
-      background-color: blue;
-      color: blue;
+      border: none;
+      background-color: $watermelon;
+      color: $neutral;
       font-weight: bold;
       letter-spacing: 2px;
     }
