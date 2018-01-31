@@ -6,7 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { startTimer, endTimer, pauseTimer, resumeTimer } from '../../../actions/register';
+import { startTimer, endTimer, pauseTimer, resumeTimer } from '../../../actions/timer';
 import convertTime from '../utils';
 
 // eslint-disable-next-line arrow-body-style
