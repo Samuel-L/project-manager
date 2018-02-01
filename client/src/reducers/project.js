@@ -4,8 +4,7 @@ export default function reducer(state = {
   fetchingProjects: false,
   fetchedProjects: false,
   fetchingError: null,
-  projectIds: [],
-  projects: [],
+  projects: null,
 }, action) {
   switch (action.type) {
     case FETCH: {
@@ -16,17 +15,16 @@ export default function reducer(state = {
         ...state,
         fetchingProjects: false,
         fetchedProjects: true,
-        projectIds: action.projectIds,
         projects: action.projects,
       };
     }
-      case FETCH_REJECTED: {
-        return {
-          ...state,
-          fetchingProjects: false,
-          fetchingError: action.payload
-        };
-      }
+    case FETCH_REJECTED: {
+      return {
+        ...state,
+        fetchingProjects: false,
+        fetchingError: action.payload,
+      };
+    }
     // no default
   }
   return state;
