@@ -9,6 +9,22 @@ class Project(models.Model):
     project_name = models.CharField(max_length=255)
     project_description = models.TextField()
 
+    @property
+    def total_tasks(self):
+        """Calculate how many tasks the project is the parent of"""
+        total_tasks = len(Task.objects.filter(project=self.id))
+        return total_tasks
+
+    @property
+    def total_finished_tasks(self):
+        """Calculate how many finished tasks the project is the parent of"""
+        total_tasks = Task.objects.filter(project=self.id)
+        total_finished_tasks = 0
+        for task in total_tasks:
+            if task.finished:
+                total_finished_tasks += 1
+        return total_finished_tasks
+
     def __str__(self):
         return self.project_name
 
@@ -41,6 +57,7 @@ class Task(models.Model):
     task_description = models.TextField()
     priority = models.IntegerField(choices=PRIORITIES)
     due_date = models.DateTimeField(blank=True, null=True)
+    finished = models.BooleanField()
 
     def __str__(self):
         return self.task_name
