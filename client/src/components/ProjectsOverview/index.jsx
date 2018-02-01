@@ -23,7 +23,11 @@ export default class ProjectsOverview extends React.Component {
 
     const projectItems = projects.map(proj =>
       (
-        <Project desc={proj.project_description} tasks={40} finishedTasks={5}>
+        <Project
+          desc={proj.project_description}
+          tasks={proj.total_tasks}
+          finishedTasks={proj.total_finished_tasks}
+        >
           { proj.project_name }
         </Project>
       ));
