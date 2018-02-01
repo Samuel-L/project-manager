@@ -23,6 +23,7 @@ export default class ProjectsOverview extends React.Component {
       projectItems = projects.map(proj =>
         (
           <Project
+            key={proj.id}
             desc={proj.project_description}
             tasks={proj.total_tasks}
             finishedTasks={proj.total_finished_tasks}
