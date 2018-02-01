@@ -8,7 +8,8 @@ class ProjectSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Project
-        fields = ('id', 'owner', 'project_name', 'project_description')
+        fields = ('id', 'owner', 'project_name', 'project_description',
+        'total_tasks', 'total_finished_tasks')
 
 
 class ScopeSerializer(serializers.ModelSerializer):
