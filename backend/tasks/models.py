@@ -41,6 +41,7 @@ class Task(models.Model):
     task_description = models.TextField()
     priority = models.IntegerField(choices=PRIORITIES)
     due_date = models.DateTimeField(blank=True, null=True)
+    finished = models.BooleanField()
 
     def __str__(self):
         return self.task_name
