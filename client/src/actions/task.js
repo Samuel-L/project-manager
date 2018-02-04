@@ -3,7 +3,7 @@ import axios from 'axios';
 import {
   TASK_FETCH,
   TASK_FETCH_FULFILLED,
-  TASK_FETCH_REJECTED
+  TASK_FETCH_REJECTED,
 } from '../actionTypes/task';
 
 function fetchTasks() {
