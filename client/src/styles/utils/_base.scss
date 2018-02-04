@@ -1,4 +1,7 @@
-#root { background-color: $background-color; }
+#root {
+  background-color: $background-color;
+  font-family: $text-family;
+}
 
 .not-auth-container {
   height: 100%;

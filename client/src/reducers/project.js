@@ -1,4 +1,8 @@
-import { FETCH, FETCH_FULFILLED, FETCH_REJECTED } from '../actionTypes/fetch';
+import {
+  PROJECT_FETCH,
+  PROJECT_FETCH_FULFILLED,
+  PROJECT_FETCH_REJECTED,
+} from '../actionTypes/project';
 
 export default function reducer(state = {
   fetchingProjects: false,
@@ -7,10 +11,10 @@ export default function reducer(state = {
   projects: null,
 }, action) {
   switch (action.type) {
-    case FETCH: {
+    case PROJECT_FETCH: {
       return { ...state, fetchingProjects: true };
     }
-    case FETCH_FULFILLED: {
+    case PROJECT_FETCH_FULFILLED: {
       return {
         ...state,
         fetchingProjects: false,
@@ -18,7 +22,7 @@ export default function reducer(state = {
         projects: action.projects,
       };
     }
-    case FETCH_REJECTED: {
+    case PROJECT_FETCH_REJECTED: {
       return {
         ...state,
         fetchingProjects: false,

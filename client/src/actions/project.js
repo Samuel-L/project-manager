@@ -1,10 +1,14 @@
 import axios from 'axios';
 
-import { FETCH, FETCH_FULFILLED, FETCH_REJECTED } from '../actionTypes/fetch';
+import {
+  PROJECT_FETCH,
+  PROJECT_FETCH_FULFILLED,
+  PROJECT_FETCH_REJECTED,
+} from '../actionTypes/project';
 
 function fetchProjects() {
   return function func(dispatch) {
-    dispatch({ type: FETCH });
+    dispatch({ type: PROJECT_FETCH });
 
     const jwtToken = window.localStorage.token;
 
@@ -14,10 +18,10 @@ function fetchProjects() {
     )
       .then((response) => {
         const projects = response.request.response;
-        dispatch({ type: FETCH_FULFILLED, projects });
+        dispatch({ type: PROJECT_FETCH_FULFILLED, projects });
       })
       .catch((err) => {
-        dispatch({ type: FETCH_REJECTED, payload: err });
+        dispatch({ type: PROJECT_FETCH_REJECTED, payload: err });
       });
   };
 }
