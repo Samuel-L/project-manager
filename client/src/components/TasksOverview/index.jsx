@@ -18,7 +18,6 @@ export default class TasksOverview extends React.Component {
   taskItems() {
     let tasks;
     let taskItems;
-    console.log(this.props)
     if (this.props.tasks !== '[]' && this.props.tasks !== null) {
       tasks = JSON.parse(this.props.tasks);
       taskItems = tasks.map(task =>
@@ -26,7 +25,7 @@ export default class TasksOverview extends React.Component {
           <Task
             project={task.project}
             priority={task.priority}
-            dueDate={task.due_date}
+            dueDate={task.due_date ? task.due_date : 'N/A'}
           >
             { task.task_name }
           </Task>
@@ -52,3 +51,11 @@ export default class TasksOverview extends React.Component {
     );
   }
 }
+
+TasksOverview.propTypes = {
+  tasks: PropTypes.string,
+};
+
+TasksOverview.defaultProps = {
+  tasks: '',
+};
