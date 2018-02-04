@@ -14,10 +14,16 @@
 
     margin-top: 20px;
     margin-left: 20px;
+
+    .no-tasks-notice {
+      grid-column: 1 / 3;
+      align-self: center;
+    }
+
     .task {
       grid-column: 1 / 3;
       align-self: center;
-      
+
       .task__info-container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
