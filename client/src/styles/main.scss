@@ -6,6 +6,7 @@
 @import './elements/PageHeading/styles';
 @import './elements/OverviewHeading/styles';
 @import './elements/Project/styles';
+@import './elements/Task/styles';
 
 @import './components/Timers/styles';
 
@@ -17,6 +18,9 @@
 
 @import './components/ProjectsOverview/styles';
 @import './components/ProjectsOverview/layout';
+
+@import './components/TasksOverview/styles';
+@import './components/TasksOverview/layout';
 
 @import './views/Home/layout';
 @import './views/Home/styles';

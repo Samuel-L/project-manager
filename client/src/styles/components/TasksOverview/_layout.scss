@@ -1,0 +1,30 @@
+.tasks-container {
+  max-height: 100%;
+  display: grid;
+  grid-template-rows: 10% 1fr;
+  grid-template-columns: 1fr;
+
+  .tasks {
+    overflow: scroll;
+    display: grid;
+    grid-auto-rows: 25%;
+    grid-template-columns: 30% 1fr;
+    grid-auto-flow: column;
+    grid-gap: 50px;
+
+    margin-top: 20px;
+    margin-left: 20px;
+    .task {
+      grid-column: 1 / 3;
+      align-self: center;
+      
+      .task__info-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
+
+        margin-top: 10px;
+      }
+    }
+  }
+}
