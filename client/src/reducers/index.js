@@ -5,6 +5,7 @@ import login from './login';
 import timer from './timer';
 import project from './project';
 import task from './task';
+import report from './report';
 
 export default combineReducers({
   register,
@@ -12,4 +13,5 @@ export default combineReducers({
   timer,
   project,
   task,
+  report,
 });
