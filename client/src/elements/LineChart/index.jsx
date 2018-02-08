@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { LineChart as Chart, Line, XAxis, YAxis, Legend, Tooltip } from 'recharts';
+import { LineChart as Chart, Line, XAxis, YAxis, Legend, Tooltip, Label } from 'recharts';
 
 import appendOrdinalIndicator from '../../utils/dateHelpers';
 
@@ -51,7 +51,9 @@ export default class LineChart extends React.Component {
 
     return (
       <Chart width={600} height={300} data={data}>
-        <XAxis dataKey="name" />
+        <XAxis dataKey="name">
+          <Label value="Last 7 days" offset={-5} position="insideBottom" />
+        </XAxis>
         <YAxis label={{ value: 'minutes', angle: -90, position: 'insideLeft' }} />
         <Legend verticalAlign="top" height={36} />
         <Tooltip />
