@@ -6,19 +6,19 @@ import { LineChart as Chart, Line, XAxis, YAxis, Legend, Tooltip } from 'rechart
 import appendOrdinalIndicator from '../../utils/dateHelpers';
 
 export default class LineChart extends React.Component {
-  render() {
+  CreateChartData() {
+    const data = [];
 
     if (this.props.reports !== '[]' && this.props.reports !== null) {
       const reports = JSON.parse(this.props.reports);
-      var data = [];
 
       // First we sort the reports by date and project. Making sure to add two
       // reports together if they are reported on the same day.
-      let sortedReports = {};
-      for (let report of reports) {
-        let project = report.project;
-        let date = new Date(report.start.substring(0, 10));
-        let minutesWorkedOnDate = report.total_in_seconds / 60;
+      const sortedReports = {};
+      for (const report of reports) {
+        const { project } = report;
+        const date = new Date(report.start.substring(0, 10));
+        const minutesWorkedOnDate = report.total_in_seconds / 60;
 
         if (!sortedReports[project]) {
           sortedReports[project] = {};
@@ -33,20 +33,26 @@ export default class LineChart extends React.Component {
 
       // Now we add the sorted reports to the data variable that will be used by
       // recharts.
-      for (let project in sortedReports) {
-        for (let report in sortedReports[project]) {
+      for (const project in sortedReports) {
+        for (const report in sortedReports[project]) {
           let date = new Date(report);
-          let minutesWorkedOnDate = sortedReports[project][date];
+          const minutesWorkedOnDate = sortedReports[project][date];
           date = appendOrdinalIndicator(date.getDate());
-          data.push({name: date, [project]: minutesWorkedOnDate});
+          data.push({ name: date, [project]: minutesWorkedOnDate });
         }
       }
+
+      return data;
     }
+    return data;
+  }
+  render() {
+    const data = this.CreateChartData();
 
     return (
       <Chart width={600} height={300} data={data}>
-        <XAxis dataKey="name"/>
-        <YAxis label={{ value: 'minutes', angle: -90, position: 'insideLeft' }}/>
+        <XAxis dataKey="name" />
+        <YAxis label={{ value: 'minutes', angle: -90, position: 'insideLeft' }} />
         <Legend verticalAlign="top" height={36} />
         <Tooltip />
         <Line type="monotone" dataKey="22" />
