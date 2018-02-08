@@ -1,7 +1,5 @@
 function appendOrdinalIndicator(date) {
-  date = date.toString();
-
-  switch (date.slice(-1)) {
+  switch (date.toString().slice(-1)) {
     case '1':
       return `${date}st`;
     case '2':
