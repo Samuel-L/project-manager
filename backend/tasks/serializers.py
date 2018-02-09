@@ -23,6 +23,8 @@ class ScopeSerializer(serializers.ModelSerializer):
 
 class TaskSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
+    project = ProjectSerializer()
+    scope = ScopeSerializer()
 
     class Meta:
         model = Task
