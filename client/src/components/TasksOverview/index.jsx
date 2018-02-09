@@ -6,6 +6,7 @@ import OverviewHeading from '../../elements/OverviewHeading/index';
 import Task from '../../elements/Task/index';
 
 import fetchTasks from '../../actions/task';
+import priorityToString from '../../utils/priorityToString';
 
 @connect(store => ({
   tasks: store.task.tasks,
@@ -23,9 +24,10 @@ export default class TasksOverview extends React.Component {
       taskItems = tasks.map(task =>
         (
           <Task
-            project={task.project}
-            priority={task.priority}
+            project={task.project.project_name}
+            priority={priorityToString(task.priority)}
             dueDate={task.due_date ? task.due_date : 'N/A'}
+            key={task.id}
           >
             { task.task_name }
           </Task>
