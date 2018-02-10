@@ -2,7 +2,7 @@ from rest_framework import viewsets
 
 from tasks.models import Task, Project, Scope
 from tasks.serializers import TaskSerializer, ProjectSerializer,\
-    ScopeSerializer
+    ScopeSerializer, DetailedTaskSerializer
 from utils.permissions import IsOwner
 
 
@@ -42,6 +42,13 @@ class TaskViewSet(viewsets.ModelViewSet):
         """Only return tasks that user created."""
         tasks = Task.objects.filter(owner=self.request.user)
         return tasks
+
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return DetailedTaskSerializer
+        if self.action == 'retrieve':
+            return DetailedTaskSerializer
+        return TaskSerializer
 
     def perform_create(self, serializer):
         """Set owner to the user creating the task and create entry."""
