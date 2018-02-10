@@ -1,25 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import OverviewHeading from '../../elements/OverviewHeading/index';
 import Task from '../../elements/Task/index';
 
-import { fetchTasks } from '../../actions/task';
 import priorityToString from '../../utils/priorityToString';
 
-@connect(store => ({
-  tasks: store.task.tasks,
-}))
-export default class TasksOverview extends React.Component {
-  componentWillMount() {
-    this.props.dispatch(fetchTasks()); // eslint-disable-line react/prop-types
-  }
-
+class TasksOverview extends Component {
   taskItems() {
     let tasks;
     let taskItems;
-    if (this.props.tasks !== '[]' && this.props.tasks !== null) {
+    if (this.props.tasks !== '' && this.props.tasks !== null) {
       tasks = JSON.parse(this.props.tasks);
       taskItems = tasks.map(task =>
         (
@@ -61,3 +52,5 @@ TasksOverview.propTypes = {
 TasksOverview.defaultProps = {
   tasks: '',
 };
+
+export default TasksOverview;
