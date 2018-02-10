@@ -1,6 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from datetime import timedelta
+from django.utils import timezone
+
+from reports.models import Report
+
 from tasks.consts import PRIORITIES
 
 
@@ -24,6 +29,33 @@ class Project(models.Model):
             if task.finished:
                 total_finished_tasks += 1
         return total_finished_tasks
+
+    @property
+    def total_worked_time(self):
+        """Calculate how many minutes the user has worked on the project"""
+        total_reports = Report.objects.filter(project=self.id)
+        worked_time = 0
+        for report in total_reports:
+            worked_time += report.total_in_seconds / 60
+
+        return worked_time
+
+    @property
+    def worked_since_start_of_week(self):
+        """
+        Calculate how many minutes the user has worked on
+        the project the last seven days.
+        """
+        today = timezone.now()
+        start_of_week = today - timedelta(days=today.weekday())
+        reports_since_start_of_week = Report.objects.filter(project=self.id).filter(
+            start__gte=start_of_week
+        )
+        worked_time = 0
+        for report in reports_since_start_of_week:
+            worked_time += report.total_in_seconds / 60
+
+        return worked_time
 
     def __str__(self):
         return self.project_name

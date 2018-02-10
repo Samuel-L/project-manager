@@ -9,7 +9,8 @@ class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = ('id', 'owner', 'project_name', 'project_description',
-        'total_tasks', 'total_finished_tasks')
+        'total_tasks', 'total_finished_tasks', 'total_worked_time',
+        'worked_since_start_of_week')
 
 
 class ScopeSerializer(serializers.ModelSerializer):
