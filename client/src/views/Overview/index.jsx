@@ -24,7 +24,7 @@ class Overview extends Component {
         <PageHeading>Overview</PageHeading>
         <TasksOverview tasks={this.props.tasks} />
         <ProjectsOverview projects={this.props.projects} />
-        <TimeWorkedOverview />
+        <TimeWorkedOverview projects={this.props.projects} />
         <CreateTaskOverview />
       </div>
     );
