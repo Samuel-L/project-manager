@@ -7,6 +7,7 @@
 @import './elements/OverviewHeading/styles';
 @import './elements/Project/styles';
 @import './elements/Task/styles';
+@import './elements/Report/styles';
 
 @import './components/Timers/styles';
 
@@ -21,6 +22,9 @@
 
 @import './components/TasksOverview/styles';
 @import './components/TasksOverview/layout';
+
+@import './components/TimeWorkedOverview/styles';
+@import './components/TimeWorkedOverview/layout';
 
 @import './views/Home/layout';
 @import './views/Home/styles';
