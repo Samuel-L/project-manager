@@ -24,6 +24,14 @@ class ScopeSerializer(serializers.ModelSerializer):
 
 class TaskSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
+
+    class Meta:
+        model = Task
+        fields = ('id', 'owner', 'task_name', 'task_description', 'priority',
+        'due_date', 'finished', 'project')
+
+class DetailedTaskSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
     project = ProjectSerializer()
     scope = ScopeSerializer()
 
