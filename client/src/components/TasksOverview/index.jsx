@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import OverviewHeading from '../../elements/OverviewHeading/index';
 import Task from '../../elements/Task/index';
 
-import fetchTasks from '../../actions/task';
+import { fetchTasks } from '../../actions/task';
 import priorityToString from '../../utils/priorityToString';
 
 @connect(store => ({

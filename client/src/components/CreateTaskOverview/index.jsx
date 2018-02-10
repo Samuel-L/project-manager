@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import fetchProjects from '../../actions/project';
+import { createTask } from '../../actions/task';
 import priorityToString from '../../utils/priorityToString';
 
 import OverviewHeading from '../../elements/OverviewHeading/index';
@@ -25,6 +26,7 @@ export default class CreateTaskOverview extends React.Component {
 
     this.inputHandler = this.inputHandler.bind(this);
     this.datetimeHandler = this.datetimeHandler.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -51,6 +53,15 @@ export default class CreateTaskOverview extends React.Component {
 
   datetimeHandler(e) {
     this.setState({ dueDate: e.format() });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const {
+      taskName, taskDesc, taskPriority, dueDate, project,
+    } = this.state;
+
+    this.props.dispatch(createTask(taskName, taskDesc, taskPriority, dueDate, project));
   }
 
   render() {
@@ -118,6 +129,7 @@ export default class CreateTaskOverview extends React.Component {
             </select>
           </div>
           <div>
+            <label htmlFor="datetime">Due Date</label>
             <Datetime value={this.state.dueDate} onChange={this.datetimeHandler} />
           </div>
           <input name="submit" type="submit" value="Create Task" />
