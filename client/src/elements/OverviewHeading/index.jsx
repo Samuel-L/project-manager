@@ -8,3 +8,5 @@ const OverviewHeading = props => (
 OverviewHeading.propTypes = {
   children: PropTypes.string.isRequired,
 };
+
+export default OverviewHeading;
