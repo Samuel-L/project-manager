@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import OverviewHeading from '../../elements/OverviewHeading/index';
@@ -17,7 +18,6 @@ export default class TimeWorkedOverview extends React.Component {
   reportItems() {
     let projectItems;
     if (this.props.projects !== '[]' && this.props.projects !== null) {
-      console.log(this.props.reports);
       const projects = JSON.parse(this.props.projects);
       projectItems = projects.map(project => (
         <Report
@@ -48,3 +48,11 @@ export default class TimeWorkedOverview extends React.Component {
     );
   }
 }
+
+TimeWorkedOverview.propTypes = {
+  projects: PropTypes.string,
+};
+
+TimeWorkedOverview.defaultProps = {
+  projects: '',
+};
