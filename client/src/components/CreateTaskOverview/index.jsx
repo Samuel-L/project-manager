@@ -121,7 +121,12 @@ export default class CreateTaskOverview extends React.Component {
               {
                 projects ?
                   projects.map(project => (
-                    <option value={project.id}>{ project.project_name }</option>
+                    <option
+                      value={project.id}
+                      key={project.id}
+                    >
+                      { project.project_name }
+                    </option>
                   ))
                 :
                   <option>You have no projects!</option>

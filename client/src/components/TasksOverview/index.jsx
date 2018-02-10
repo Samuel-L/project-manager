@@ -1,28 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import OverviewHeading from '../../elements/OverviewHeading/index';
-import Task from '../../elements/Task/index';
+import Task from './Task';
 
-import { fetchTasks } from '../../actions/task';
 import priorityToString from '../../utils/priorityToString';
 
-@connect(store => ({
-  tasks: store.task.tasks,
-}))
-export default class TasksOverview extends React.Component {
-  componentWillMount() {
-    this.props.dispatch(fetchTasks()); // eslint-disable-line react/prop-types
-  }
 
-  taskItems() {
-    let tasks;
-    let taskItems;
-    if (this.props.tasks !== '[]' && this.props.tasks !== null) {
-      tasks = JSON.parse(this.props.tasks);
-      taskItems = tasks.map(task =>
-        (
+const TasksOverview = props => (
+  <div className="tasks-container">
+    <OverviewHeading>Tasks</OverviewHeading>
+    <ul className="tasks">
+      { (props.tasks !== '' && props.tasks !== null)
+      ?
+        JSON.parse(props.tasks).map(task => (
           <Task
             project={task.project.project_name}
             priority={priorityToString(task.priority)}
@@ -31,33 +22,18 @@ export default class TasksOverview extends React.Component {
           >
             { task.task_name }
           </Task>
-        ));
-    } else {
-      taskItems = (
+        ))
+      :
         <li className="no-tasks-notice">
           It seems like you have no tasks!
-        </li>);
-    }
-
-    return taskItems;
-  }
-
-  render() {
-    return (
-      <div className="tasks-container">
-        <OverviewHeading>Tasks</OverviewHeading>
-        <ul className="tasks">
-          { this.taskItems() }
-        </ul>
-      </div>
-    );
-  }
-}
+        </li>
+      }
+    </ul>
+  </div>
+);
 
 TasksOverview.propTypes = {
-  tasks: PropTypes.string,
+  tasks: PropTypes.string.isRequired,
 };
 
-TasksOverview.defaultProps = {
-  tasks: '',
-};
+export default TasksOverview;
