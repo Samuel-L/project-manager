@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import OverviewHeading from '../../elements/OverviewHeading/index';
-import Report from '../../elements/Report/index';
+import Report from './Report';
 
 
 const TimeWorkedOverview = props => (

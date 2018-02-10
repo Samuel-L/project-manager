@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import OverviewHeading from '../../elements/OverviewHeading/index';
-import Project from '../../elements/Project/index';
+import Project from './Project';
 
 
 const ProjectsOverview = props => (

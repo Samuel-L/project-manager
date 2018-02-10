@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import OverviewHeading from '../../elements/OverviewHeading/index';
-import Task from '../../elements/Task/index';
+import Task from './Task';
 
 import priorityToString from '../../utils/priorityToString';
 
