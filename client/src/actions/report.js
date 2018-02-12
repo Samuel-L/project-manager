@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { axiosInstance } from '../utils/axiosInstance';
 
 import {
   REPORT_FETCH,
@@ -10,12 +10,10 @@ function fetchReports() {
   return function func(dispatch) {
     dispatch({ type: REPORT_FETCH });
 
-    const jwtToken = window.localStorage.token;
-
-    axios.get(
-      'http://localhost:8000/api/reports/',
-      { headers: { Authorization: `Token ${jwtToken}` } },
-    )
+    axiosInstance({
+      method: 'get',
+      url: '/reports/'
+    })
       .then((response) => {
         const reports = response.request.response;
         dispatch({ type: REPORT_FETCH_FULFILLED, reports });
