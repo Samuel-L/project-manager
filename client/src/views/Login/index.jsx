@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import loginUser from '../../actions/login';
+import { loginUser } from '../../actions/login';
 
 // eslint-disable-next-line arrow-body-style
 @connect((store) => {
