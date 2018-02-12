@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
+import LogoutButton from '../../LogoutButton/index';
+
 const Nav = withRouter(props => <NotAuthNav {...props} />);
 
 class NotAuthNav extends React.Component {
@@ -26,6 +28,9 @@ class NotAuthNav extends React.Component {
             className={this.pathname === '/reports' ? 'link link-selected' : 'link'}
           >
             <Link to="/reports">Reports</Link>
+          </li>
+          <li>
+            <LogoutButton />
           </li>
         </ul>
       </div>
