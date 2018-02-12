@@ -1,4 +1,9 @@
-import { LOGIN, LOGIN_REJECTED, LOGIN_FULFILLED } from '../actionTypes/login';
+import {
+  LOGIN,
+  LOGIN_REJECTED,
+  LOGIN_FULFILLED,
+  CHANGE_LOGIN_STATUS,
+} from '../actionTypes/login';
 
 export default function reducer(state = {
   loggingIn: false,
@@ -14,6 +19,9 @@ export default function reducer(state = {
     }
     case LOGIN_FULFILLED: {
       return { ...state, loggingIn: false, loggedIn: true };
+    }
+    case CHANGE_LOGIN_STATUS: {
+      return { ...state, loggedIn: action.payload };
     }
     // no default
   }

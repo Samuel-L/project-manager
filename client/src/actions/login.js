@@ -1,19 +1,38 @@
-import auth from '../utils/auth';
-import { LOGIN, LOGIN_FULFILLED, LOGIN_REJECTED } from '../actionTypes/login';
+import axios from 'axios';
+import { baseURL } from '../utils/axiosInstance';
+import {
+  LOGIN,
+  LOGIN_FULFILLED,
+  LOGIN_REJECTED,
+  CHANGE_LOGIN_STATUS,
+} from '../actionTypes/login';
 
 function loginUser(username, password) {
   return function func(dispatch) {
     dispatch({ type: LOGIN });
 
-    auth.login(username, password);
-    const loggedIn = auth.loggedIn();
+    const headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' };
 
-    if (loggedIn) {
-      dispatch({ type: LOGIN_FULFILLED });
-    } else {
-      dispatch({ type: LOGIN_REJECTED });
-    }
+    const postPayload = {
+      username, password,
+    };
+
+    axios.post(`${baseURL}accounts/obtain-auth-token/`, postPayload, headers)
+      .then((response) => {
+        const { token } = response.data;
+        localStorage.token = token;
+        dispatch({ type: LOGIN_FULFILLED });
+      })
+      .catch((err) => {
+        dispatch({ type: LOGIN_REJECTED, payload: err });
+      });
   };
 }
 
-export default loginUser;
+function checkLoginStatus() {
+  return function func(dispatch) {
+    dispatch({ type: CHANGE_LOGIN_STATUS, payload: !!localStorage.token });
+  };
+}
+
+export { loginUser, checkLoginStatus };
