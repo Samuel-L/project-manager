@@ -35,4 +35,11 @@ function checkLoginStatus() {
   };
 }
 
-export { loginUser, checkLoginStatus };
+function logoutUser() {
+  return function func(dispatch) {
+    localStorage.removeItem('token');
+    dispatch({ type: CHANGE_LOGIN_STATUS, payload: !!localStorage.token });
+  };
+}
+
+export { loginUser, checkLoginStatus, logoutUser };
