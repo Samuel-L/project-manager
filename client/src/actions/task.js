@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { axiosInstance } from '../utils/axiosInstance';
 
 import {
   TASK_FETCH,
@@ -13,12 +13,10 @@ function fetchTasks() {
   return function func(dispatch) {
     dispatch({ type: TASK_FETCH });
 
-    const jwtToken = window.localStorage.token;
-
-    axios.get(
-      'http://localhost:8000/api/tasks/tasks/',
-      { headers: { Authorization: `Token ${jwtToken}` } },
-    )
+    axiosInstance({
+      method: 'get',
+      url: '/tasks/tasks/',
+    })
       .then((response) => {
         const tasks = response.request.response;
         dispatch({ type: TASK_FETCH_FULFILLED, tasks });
@@ -32,13 +30,6 @@ function fetchTasks() {
 function createTask(name, desc, priority, dueDate, project) {
   return function func(dispatch) {
     dispatch({ type: TASK_CREATE });
-
-    const jwtToken = window.localStorage.token;
-
-    const axiosInstance = axios.create({
-      baseURL: 'http://localhost:8000/api/',
-      headers: { Authorization: `Token ${jwtToken}` },
-    });
 
     axiosInstance({
       method: 'post',

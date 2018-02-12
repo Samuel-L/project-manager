@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { axiosInstance } from '../utils/axiosInstance';
 
 import {
   PROJECT_FETCH,
@@ -10,12 +10,10 @@ function fetchProjects() {
   return function func(dispatch) {
     dispatch({ type: PROJECT_FETCH });
 
-    const jwtToken = window.localStorage.token;
-
-    axios.get(
-      'http://localhost:8000/api/tasks/projects/',
-      { headers: { Authorization: `Token ${jwtToken}` } },
-    )
+    axiosInstance({
+      method: 'get',
+      url: '/tasks/projects/',
+    })
       .then((response) => {
         const projects = response.request.response;
         dispatch({ type: PROJECT_FETCH_FULFILLED, projects });
