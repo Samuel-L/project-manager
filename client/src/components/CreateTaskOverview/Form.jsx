@@ -65,7 +65,10 @@ const Form = props => (
     </div>
     <div>
       <label className="input-label" htmlFor="datetime">Due Date</label>
-      <Datetime value={props.dueDate} onChange={props.datetimeHandler} />
+      <Datetime
+        value={props.dueDate}
+        onChange={props.datetimeHandler}
+      />
     </div>
     <div>
       <label className="input-label" htmlFor="scope">Scope</label>
@@ -104,7 +107,7 @@ Form.propTypes = {
   project: PropTypes.number,
   scopes: PropTypes.string.isRequired,
   scope: PropTypes.number,
-  dueDate: PropTypes.string.isRequired,
+  dueDate: PropTypes.objectOf(PropTypes.any),
   taskPriority: PropTypes.number.isRequired,
   inputHandler: PropTypes.func.isRequired,
   datetimeHandler: PropTypes.func.isRequired,
@@ -114,6 +117,7 @@ Form.propTypes = {
 Form.defaultProps = {
   project: undefined,
   scope: undefined,
+  dueDate: null,
 };
 
 Form.displayName = 'Form';
