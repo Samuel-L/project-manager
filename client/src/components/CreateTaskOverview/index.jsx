@@ -53,7 +53,6 @@ class CreateTaskOverview extends Component {
     const {
       taskName, taskDesc, taskPriority, dueDate, project, scope,
     } = this.state;
-    console.log(`Scope in handleSubmit(): ${scope}. Sending props.createTask now.`);
     this.props.createTask(taskName, taskDesc, taskPriority, dueDate, project, scope);
   }
 
