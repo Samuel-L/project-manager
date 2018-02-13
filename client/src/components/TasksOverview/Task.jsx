@@ -13,7 +13,8 @@ const Task = props => (
         <span className="task__label">Priority:</span> {props.priority}
       </p>
       <p className="task__info">
-        <span className="task__label">Due date:</span> <Moment format="YYYY-MM-DD HH:mm A">
+        <span className="task__label">Due date:</span>
+        <Moment format="YYYY-MM-DD HH:mm A">
           {props.dueDate}
         </Moment>
       </p>
