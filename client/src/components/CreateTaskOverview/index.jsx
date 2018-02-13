@@ -14,7 +14,7 @@ class CreateTaskOverview extends Component {
       taskName: '',
       taskDesc: '',
       taskPriority: 1,
-      dueDate: '',
+      dueDate: null,
       project: undefined,
       scope: undefined,
     };
@@ -45,14 +45,22 @@ class CreateTaskOverview extends Component {
   }
 
   datetimeHandler(e) {
-    this.setState({ dueDate: e.format() });
+    if (e) {
+      this.setState({ dueDate: e });
+    } else {
+      this.setState({ dueDate: null });
+    }
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const {
-      taskName, taskDesc, taskPriority, dueDate, project, scope,
+      taskName, taskDesc, taskPriority, project, scope,
     } = this.state;
+
+    let { dueDate } = this.state;
+    if (this.state.dueDate) { dueDate = dueDate.format(); }
+
     this.props.createTask(taskName, taskDesc, taskPriority, dueDate, project, scope);
   }
 
