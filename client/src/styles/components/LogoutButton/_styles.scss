@@ -1,0 +1,12 @@
+.logout-button {
+  border: none;
+  background: $watermelon;
+  color: $neutral;
+  padding: 10px 20px 10px 20px;
+  opacity: 0.75;
+}
+
+.logout-button:hover {
+  cursor: pointer;
+  opacity: 1;
+}
