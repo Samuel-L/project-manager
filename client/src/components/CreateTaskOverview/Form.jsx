@@ -67,7 +67,9 @@ const Form = props => (
       <label className="input-label" htmlFor="datetime">Due Date</label>
       <Datetime value={props.dueDate} onChange={props.datetimeHandler} />
     </div>
-    <input name="submit" type="submit" value="Create Task" />
+    <div className="submit-div">
+      <input name="submit" type="submit" value="Create Task" />
+    </div>
   </form>
 );
 
