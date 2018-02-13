@@ -67,6 +67,30 @@ const Form = props => (
       <label className="input-label" htmlFor="datetime">Due Date</label>
       <Datetime value={props.dueDate} onChange={props.datetimeHandler} />
     </div>
+    <div>
+      <label className="input-label" htmlFor="scope">Scope</label>
+      <select
+        id="scope"
+        className="select-scope"
+        name="scope"
+        onChange={props.inputHandler}
+        value={props.scope}
+      >
+        <option />
+        {
+          (props.scopes !== '' && props.scopes !== null)
+          ?
+            JSON.parse(props.scopes).filter(scope =>
+              parseInt(scope.project, 10) === parseInt(props.project, 10)).map(scope => (
+                <option value={scope.id} key={scope.id}>
+                  {scope.scope_name}
+                </option>
+            ))
+          :
+            <option>You have no scopes for this project!</option>
+        }
+      </select>
+    </div>
     <div className="submit-div">
       <input name="submit" type="submit" value="Create Task" />
     </div>
@@ -77,12 +101,21 @@ Form.propTypes = {
   taskName: PropTypes.string.isRequired,
   taskDesc: PropTypes.string.isRequired,
   projects: PropTypes.string.isRequired,
-  project: PropTypes.number.isRequired,
+  project: PropTypes.number,
+  scopes: PropTypes.string.isRequired,
+  scope: PropTypes.number,
   dueDate: PropTypes.string.isRequired,
   taskPriority: PropTypes.number.isRequired,
   inputHandler: PropTypes.func.isRequired,
   datetimeHandler: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
 };
+
+Form.defaultProps = {
+  project: undefined,
+  scope: undefined,
+};
+
+Form.displayName = 'Form';
 
 export default Form;

@@ -27,7 +27,7 @@ function fetchTasks() {
   };
 }
 
-function createTask(name, desc, priority, dueDate, project) {
+function createTask(name, desc, priority, dueDate, project, scope) {
   return function func(dispatch) {
     dispatch({ type: TASK_CREATE });
 
@@ -40,6 +40,7 @@ function createTask(name, desc, priority, dueDate, project) {
         priority,
         due_date: dueDate,
         project,
+        scope,
         finished: false,
       },
     })
