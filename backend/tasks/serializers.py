@@ -28,7 +28,7 @@ class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields = ('id', 'owner', 'task_name', 'task_description', 'priority',
-        'due_date', 'finished', 'project')
+        'due_date', 'finished', 'project', 'scope')
 
 class DetailedTaskSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')

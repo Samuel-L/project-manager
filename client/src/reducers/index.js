@@ -6,6 +6,7 @@ import timer from './timer';
 import project from './project';
 import task from './task';
 import report from './report';
+import scope from './scope';
 
 export default combineReducers({
   register,
@@ -14,4 +15,5 @@ export default combineReducers({
   project,
   task,
   report,
+  scope,
 });

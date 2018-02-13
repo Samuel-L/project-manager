@@ -15,7 +15,8 @@ class CreateTaskOverview extends Component {
       taskDesc: '',
       taskPriority: 1,
       dueDate: '',
-      project: 0,
+      project: undefined,
+      scope: undefined,
     };
 
     this.inputHandler = this.inputHandler.bind(this);
@@ -37,6 +38,8 @@ class CreateTaskOverview extends Component {
       case 'project':
         this.setState({ project: parseInt(e.target.value, 10) });
         break;
+      case 'scope':
+        this.setState({ scope: parseInt(e.target.value, 10) });
       // no default
     }
   }
@@ -48,13 +51,14 @@ class CreateTaskOverview extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const {
-      taskName, taskDesc, taskPriority, dueDate, project,
+      taskName, taskDesc, taskPriority, dueDate, project, scope,
     } = this.state;
-    this.props.createTask(taskName, taskDesc, taskPriority, dueDate, project);
+    console.log(`Scope in handleSubmit(): ${scope}. Sending props.createTask now.`);
+    this.props.createTask(taskName, taskDesc, taskPriority, dueDate, project, scope);
   }
 
   render() {
-    const { projects } = this.props;
+    const { projects, scopes } = this.props;
 
     return (
       <div className="create-task-container">
@@ -62,6 +66,7 @@ class CreateTaskOverview extends Component {
         <Form
           {...this.state}
           projects={projects}
+          scopes={scopes}
           inputHandler={this.inputHandler}
           datetimeHandler={this.datetimeHandler}
           handleSubmit={this.handleSubmit}
@@ -72,8 +77,8 @@ class CreateTaskOverview extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  createTask: (name, desc, priority, dueDate, project) =>
-    dispatch(createTask(name, desc, priority, dueDate, project)),
+  createTask: (name, desc, priority, dueDate, project, scope) =>
+    dispatch(createTask(name, desc, priority, dueDate, project, scope)),
 });
 
 const mapStateToProps = () => ({});
@@ -81,6 +86,7 @@ const mapStateToProps = () => ({});
 CreateTaskOverview.propTypes = {
   createTask: PropTypes.func.isRequired,
   projects: PropTypes.string.isRequired,
+  scopes: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateTaskOverview);
