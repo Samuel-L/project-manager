@@ -29,7 +29,7 @@ class NotAuthNav extends React.Component {
           >
             <Link to="/reports">Reports</Link>
           </li>
-          <li>
+          <li className="logout-li">
             <LogoutButton />
           </li>
         </ul>
