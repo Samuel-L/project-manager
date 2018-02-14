@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 import { checkLoginStatus } from '../actions/login';
 
@@ -19,13 +19,13 @@ class EntryPoint extends Component {
     const loggedIn = this.props.login;
     return (
       loggedIn ?
-        <BrowserRouter>
+        <HashRouter>
           <Authenticated />
-        </BrowserRouter>
+        </HashRouter>
         :
-        <BrowserRouter>
+        <HashRouter>
           <NotAuthenticated />
-        </BrowserRouter>
+        </HashRouter>
     );
   }
 }
