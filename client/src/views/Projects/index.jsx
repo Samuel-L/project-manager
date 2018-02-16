@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 
+import PageHeading from '../../elements/PageHeading/index';
+
 class Projects extends Component {
   render() {
     return (
-      <h1>Projects</h1>
+      <div className="projects-container">
+        <PageHeading>Projects</PageHeading>
+      </div>
     );
   }
 }

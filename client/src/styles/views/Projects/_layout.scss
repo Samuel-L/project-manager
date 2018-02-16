@@ -1,0 +1,13 @@
+.projects-container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-rows: 20% 1fr;
+
+  .page-heading {
+    grid-row: 1;
+    align-self: center;
+    margin-left: 50px;
+  }
+}
