@@ -1,9 +1,7 @@
 env/
 node_modules/
 backend/backend/__init__.py
-backend/backend/settings.py
 backend/backend/wsgi.py
 *.swp
 __pycache__
 db.sqlite3
-migrations
