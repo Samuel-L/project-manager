@@ -5,3 +5,4 @@ backend/backend/wsgi.py
 *.swp
 __pycache__
 db.sqlite3
+.env
