@@ -1,0 +1,31 @@
+.auth-nav {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-rows: 10% 1fr;
+
+  .username-display {
+    align-self: center;
+    justify-self: center;
+  }
+
+  .nav-links {
+    display: grid;
+    grid-template-rows: repeat(4, 10%) 1fr;
+    grid-gap: 10px;
+    .link {
+      display: grid;
+      height: 100%;
+      a {
+        align-self: center;
+        padding-left: 20px;
+      }
+    }
+    .logout-li {
+      display: grid;
+      height: 100%;
+      width: 100%;
+      justify-content: center;
+      align-content: center;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.auth-nav {
+  font-family: $nav-bar-family;
+  background-color: $nav-bg-color;
+  border-right: 1px solid $nav-border-color;
+
+  .username-display {
+    color: $blackboard;
+    font-size: 30px;
+  }
+
+  .nav-links {
+    .link {
+      margin-left: 5px;
+      a {
+        color: $carbon;
+        border-left: 4px solid $blackboard;
+        text-decoration: none;
+      }
+    }
+
+    .link-selected a {
+      color: $blackboard !important;
+      border-left: 4px solid $watermelon;
+    }
+  }
+}

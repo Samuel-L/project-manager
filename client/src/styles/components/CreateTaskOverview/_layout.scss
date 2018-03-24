@@ -1,0 +1,28 @@
+.create-task-container {
+  max-height: 100%;
+  display: grid;
+  grid-template-rows: 20% 1fr;
+  grid-template-columns: 1fr;
+
+  .create-task-form {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+
+    .input-label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .submit-div {
+      grid-row: 4;
+      grid-column: span 2;
+      display: grid;
+
+      input[type="submit"] {
+        height: 100%;
+        width: 50%;
+        justify-self: center;
+      }
+    }
+  }
+}

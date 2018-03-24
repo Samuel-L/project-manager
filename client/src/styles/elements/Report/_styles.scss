@@ -1,0 +1,17 @@
+.report {
+  .report__heading {
+    color: $redish;
+    font-size: 25px;
+  }
+
+  .report__info-container {
+    .report__info {
+      font-size: 13px;
+      color: $blackboard;
+    }
+
+    .report__label {
+      color: $dark-blue;
+    }
+  }
+}

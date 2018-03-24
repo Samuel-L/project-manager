@@ -1,0 +1,26 @@
+.not-auth-nav {
+  font-family: $nav-bar-family;
+  background-color: $background-color;
+  border-bottom: 5px solid $blackboard;
+
+  .site-title {
+    font-size: 30px;
+    color: $blackboard;
+  }
+
+  .nav-links {
+    .link {
+      a {
+        color: $blackboard;
+        text-decoration: none;
+        -webkit-transition: color .2s ease-out;
+        -moz-transition: color .2s ease-out;
+        -o-transition: color .2s ease-out;
+        transition: color .2s ease-out;
+      }
+      a:hover {
+        color: $watermelon;
+      }
+    }
+  }
+}

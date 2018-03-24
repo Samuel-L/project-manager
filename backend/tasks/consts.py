@@ -1,0 +1,5 @@
+PRIORITIES = (
+    (1, 'NOT IMPORTANT'),
+    (2, 'IMPORTANT'),
+    (3, 'VERY IMPORTANT'),
+)

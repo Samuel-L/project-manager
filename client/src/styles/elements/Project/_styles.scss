@@ -1,0 +1,18 @@
+.project {  
+  .project-heading {
+    color: $redish;
+    font-size: 25px;
+  }
+  .project-description {
+    font-size: 15px;
+    color: $blackboard;
+  }
+
+  .tasks {
+    color: $blackboard;
+
+    .finished-tasks {
+      color: $dark-green;
+    }
+  }
+}

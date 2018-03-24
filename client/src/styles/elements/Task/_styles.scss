@@ -1,0 +1,17 @@
+.task {
+  .task__heading {
+    color: $redish;
+    font-size: 25px;
+  }
+
+  .task__info-container {
+    .task__info {
+      font-size: 13px;
+      color: $blackboard;
+    }
+
+    .task__label {
+      color: $dark-blue;
+    }
+  }
+}

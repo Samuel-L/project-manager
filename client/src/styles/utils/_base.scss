@@ -1,0 +1,34 @@
+#root {
+  background-color: $background-color;
+  font-family: $text-family;
+}
+
+.not-auth-container {
+  height: 100%;
+
+  display: grid;
+  grid-template-rows: 10% 1fr;
+  grid-template-columns: 1fr;
+
+  .content {
+    background-color: $background-color;
+    height: 90%;
+  }
+}
+
+.auth-container {
+  height: 100%;
+
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 10% 1fr;
+
+  .content {
+    background-color: $background-color;
+    width: 100%;
+  }
+}
+
+a {
+  outline: 0;
+}
